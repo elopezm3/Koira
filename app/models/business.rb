@@ -6,4 +6,5 @@ class Business < ApplicationRecord
   validates :latitude, presence: true
   validates :name, presence: true
   validates :owner, presence: true
+  validates :description, presence: true
 end

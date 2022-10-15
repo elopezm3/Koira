@@ -1,6 +1,5 @@
-class BusinessesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_business, only: %i[destroy show edit update]
+class ProductOrServicesController < ApplicationController
+  before_action :set_cocktail, only: %i[destroy show edit update]
 
   def new
     @business = Business.new
@@ -41,7 +40,7 @@ class BusinessesController < ApplicationController
   end
 
   def business_params
-    params.require(:business).permit(:name, :address, :latitude, :longitude)
+    params.require(:business).permit(:name, :address, :latitude, :longitude, :owner_id)
   end
 
 end
