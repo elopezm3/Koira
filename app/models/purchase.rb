@@ -9,10 +9,9 @@ class Purchase < ApplicationRecord
   validates :phone, presence: true
   validates :number_of_people, presence: true, comparison: { greater_than: 0 }
 
-| def date_cannot_be_in_past
+  def date_cannot_be_in_past
     if date < Date.today
       errors.add(:date, "can't be in the past, be serious")
     end
   end
-
 end
