@@ -7,4 +7,5 @@ class Business < ApplicationRecord
   validates :name, presence: true
   validates :owner, presence: true
   validates :description, presence: true
+  validates :type, presence: true, inclusion: { in: ["bar", "restaurant"] }
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_201241) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_18_234033) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_201241) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "owner_id", null: false
+    t.string "type"
     t.index ["owner_id"], name: "index_businesses_on_owner_id"
   end
 
@@ -100,6 +101,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_201241) do
     t.index ["buyer_id"], name: "index_purchases_on_buyer_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "calification"
+    t.text "comment"
+    t.bigint "purchase_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchase_id"], name: "index_reviews_on_purchase_id"
+  end
+
   create_table "user_interests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "interest_id", null: false
@@ -132,6 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_201241) do
   add_foreign_key "purchase_items", "product_or_services"
   add_foreign_key "purchase_items", "purchases"
   add_foreign_key "purchases", "users", column: "buyer_id"
+  add_foreign_key "reviews", "purchases"
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
 end
