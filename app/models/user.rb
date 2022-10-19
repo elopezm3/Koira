@@ -4,8 +4,7 @@ class User < ApplicationRecord
   has_many :businesses
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :permission_level, presence: true, inclusion: { in: [1, 2, 3] }
-  # Permission Level (1=Admin(us), 2=BusinessOwner, 3=Customers)
+  validates :role, presence: true, inclusion: { in: ["admin", "seller", "customer"] }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
