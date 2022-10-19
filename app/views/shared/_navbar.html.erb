@@ -1,8 +1,17 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "logo-koira.png" %>
     <% end %>
+
+    <div id="navbar__search" class="input-group">
+      <input type="text" class="form-control" placeholder="Busca tu ocasión especial." aria-label="Busca tu ocasión especial." aria-describedby="button-addon2">
+      <i class="fa-solid fa-magnifying-glass" style="padding: 16px;"></i>
+    </div>
+
+    <div>
+      <a class="nav-link" href="">Unir mi negocio</a>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
