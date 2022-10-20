@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_18_234033) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_20_225718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_234033) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "owner_id", null: false
-    t.string "type"
+    t.string "type_of_business"
     t.index ["owner_id"], name: "index_businesses_on_owner_id"
   end
 
@@ -67,6 +67,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_234033) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
   create_table "product_or_services", force: :cascade do |t|
     t.bigint "category_id", null: false
     t.decimal "price"
@@ -75,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_234033) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.text "description"
+    t.string "type_product_service"
     t.index ["business_id"], name: "index_product_or_services_on_business_id"
     t.index ["category_id"], name: "index_product_or_services_on_category_id"
   end
@@ -129,7 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_234033) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.integer "permission_level"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
