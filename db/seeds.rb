@@ -12,6 +12,10 @@ owner.role = "customer"
 owner.email = "estebanlopez_99@hotmail.com"
 owner.password = 'koira123'
 owner.password_confirmation = 'koira123'
+avatar_url = "https://joeschmoe.io/api/v1/#{owner.first_name}"
+image_name = "#{owner.first_name}#{owner.last_name}.png"
+image = URI.open(avatar_url)
+owner.avatar.attach(io: image, filename: image_name, content_type: "image/png")
 owner.save
 
 customer = User.new
@@ -21,6 +25,10 @@ customer.role = "customer"
 customer.email = "pepito_99@hotmail.com"
 customer.password = 'koira123'
 customer.password_confirmation = 'koira123'
+avatar_url = "https://joeschmoe.io/api/v1/#{customer.first_name}"
+image_name = "#{customer.first_name}#{customer.last_name}.png"
+image = URI.open(avatar_url)
+customer.avatar.attach(io: image, filename: image_name, content_type: "image/png")
 customer.save
 
 business = Business.new
@@ -33,6 +41,10 @@ owner.save
 business.owner = owner
 business.description = "Nice place"
 business.type_of_business = "restaurant"
+file = URI.open("https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/hc_876x493/public/media/image/2015/05/474316-pollos-hermanos-breaking-bad-pueden-convertirse-restaurante-real.jpg?itok=YA3n0gfV")
+business.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+file = URI.open("https://blog-eeuu.com/wp-content/uploads/2018/08/breaking-bad-logo.jpeg")
+business.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
 business.save
 
 category = Category.create(name: "sea food")
@@ -41,8 +53,13 @@ product = ProductOrService.new
 product.category = category
 product.price = 10
 product.business = business
-product.name = "Fish"
-product.description = "With lemmon"
+product.name = "Pollo"
+product.description = "Crispy Chicken With fries"
+file = URI.open("https://www.comedera.com/wp-content/uploads/2018/08/pollo-frito.jpg")
+product.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+file = URI.open("https://img.taste.com.au/ol2Jq8ZQ/taste/2016/11/rachel-87711-2.jpeg")
+product.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
+product.type_product_service = "product"
 product.save
 
 purchase = Purchase.new

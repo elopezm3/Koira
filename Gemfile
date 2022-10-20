@@ -36,6 +36,10 @@ gem "pundit"
 
 gem 'jquery-rails'
 gem 'turbolinks_render'
+gem "pg_search"
+gem 'faker'
+gem 'open-uri'
+gem 'json'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
