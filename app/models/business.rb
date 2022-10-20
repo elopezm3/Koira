@@ -1,5 +1,16 @@
 class Business < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_business,
+                  against: [:name.downcase, :description.downcase, :type_of_business.downcase],
+                  associated_against: {
+                    product_or_services: [:name.downcase, :description.downcase]
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   has_many :product_or_services
+  has_many_attached :photos
   belongs_to :owner, class_name: "User"
   validates :name, presence: true
   validates :address, presence: true
