@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @businesses = @category.businesses
   end
 
   def new
