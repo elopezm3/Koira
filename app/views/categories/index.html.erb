@@ -1,0 +1,8 @@
+<% @categories.each do |category| %>
+  <%= cl_image_path category.photo.key %>
+  <%= link_to category_path(category), category.name %>
+  <% if current_user.role == "admin" %>
+    <%= button_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe, edit_category_path(category), method: :get %>
+    <%= button_to "<i class='fa-solid fa-trash'></i>".html_safe, category_path(cocktail), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+  <% end %>
+<% end %>
