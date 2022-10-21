@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: [:show]
   root to: "pages#home"
   get "/pages/supplier", to: "pages#supplier", as: "supplier"
   resources :businesses, only: [:index, :update, :show, :destroy]
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get "/users/:user_id/purchases/new", to: "user_interests#new", as: "new_user_purchase"
   post "/users/:user_id/purchases", to: "user_interests#create", as: "create_user_purchase"
   get "/my_business/:business_id", to: "business#show_for_owner", as: "my_business"
+  resources :categories  # New, create edit update destroy only for admins
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
