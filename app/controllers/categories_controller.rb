@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_category, only: %i[show destroy]
+  before_action :set_category, only: %i[show destroy edit]
   before_action :set_category, only: %i[create]
   def index
     @categories = Category.all
@@ -12,7 +12,6 @@ class CategoriesController < ApplicationController
 
   def new
     authorize @category
-    @category = Category.new
   end
 
   def create
@@ -27,7 +26,6 @@ class CategoriesController < ApplicationController
 
   def edit
     authorize @category
-    @category = Category.new
   end
 
   def update
