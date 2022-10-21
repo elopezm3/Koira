@@ -23,10 +23,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :permission_level,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "Permission Level" }%>
+    <%= f.hidden_field :role, value: "customer"%>
   </div>
 
   <div class="form-actions">
