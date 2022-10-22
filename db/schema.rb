@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_20_225718) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_21_013411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_225718) do
     t.string "name"
     t.text "description"
     t.string "type_product_service"
+    t.string "type_of_product"
     t.index ["business_id"], name: "index_product_or_services_on_business_id"
     t.index ["category_id"], name: "index_product_or_services_on_category_id"
   end
