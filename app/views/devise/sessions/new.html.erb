@@ -1,20 +1,55 @@
-<h2>Log in</h2>
+<div class="card mb-7" style="max-width: 800px; margin: auto; padding: 16px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="../../images/3trigos.jpg" class="card-img" alt="">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><strong>Bienvenido de nuevo</strong></h5>
+        <p class="card-text">Estamos felices de que estes de regreso, para que juntos vivamos nuevas experiencias</p>
+        </div>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" },
+                        placeholder: "info@koira.com" %>
+            <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "current-password" },
+                        placeholder: "***************" %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
+          <div class="signup-connect" class="d-grid gap-2 col-6 mx-auto">
+            <a href="https://www.facebook.com">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="55" height="55"
+              viewBox="0 0 80 80"
+              style=" fill:#000000;"><path fill="#8bb7f0" d="M40 2A38 38 0 1 0 40 78A38 38 0 1 0 40 2Z"></path><path fill="#fff" d="M77.784 44.013c.006-.054.016-.106.021-.159C77.8 43.907 77.79 43.96 77.784 44.013zM2.194 43.84c.007.073.021.144.029.217C2.215 43.985 2.201 43.912 2.194 43.84zM44.907 50.471h9.835l1.544-9.989H44.907v-5.46c0-4.149 1.356-7.83 5.239-7.83h6.238v-8.719C55.287 18.325 52.97 18 48.59 18c-9.146 0-14.507 4.831-14.507 15.835v6.647h-9.402v9.989h9.402V77.4c1.858.279 3.744.47 5.68.47 1.749 0 3.458-.159 5.144-.388V50.471z"></path><g><path fill="#4e7ab5" d="M40,3c20.402,0,37,16.598,37,37S60.402,77,40,77S3,60.402,3,40S19.598,3,40,3 M40,2 C19.013,2,2,19.013,2,40s17.013,38,38,38s38-17.013,38-38S60.987,2,40,2L40,2z"></path></g></svg></a>
+            <a href="https://www.twitter.com">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="58" height="58"
+              viewBox="0 0 48 48"
+              style=" fill:#000000;"><path fill="#03a9f4" d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"></path><path fill="#fff" d="M36,17.12c-0.882,0.391-1.999,0.758-3,0.88c1.018-0.604,2.633-1.862,3-3 c-0.951,0.559-2.671,1.156-3.793,1.372C31.311,15.422,30.033,15,28.617,15C25.897,15,24,17.305,24,20v2c-4,0-7.9-3.047-10.327-6 c-0.427,0.721-0.667,1.565-0.667,2.457c0,1.819,1.671,3.665,2.994,4.543c-0.807-0.025-2.335-0.641-3-1c0,0.016,0,0.036,0,0.057 c0,2.367,1.661,3.974,3.912,4.422C16.501,26.592,16,27,14.072,27c0.626,1.935,3.773,2.958,5.928,3c-1.686,1.307-4.692,2-7,2 c-0.399,0-0.615,0.022-1-0.023C14.178,33.357,17.22,34,20,34c9.057,0,14-6.918,14-13.37c0-0.212-0.007-0.922-0.018-1.13 C34.95,18.818,35.342,18.104,36,17.12"></path></svg></a>
+            <a href="https://www.instagram.com">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="78" height="78"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><defs><radialGradient cx="73.08671" cy="136.40743" r="125.4927" gradientUnits="userSpaceOnUse" id="color-1_Xy10Jcu1L2Su_gr1"><stop offset="0" stop-color="#ffdd55"></stop><stop offset="0.328" stop-color="#ff543f"></stop><stop offset="0.348" stop-color="#fc5245"></stop><stop offset="0.504" stop-color="#e64771"></stop><stop offset="0.643" stop-color="#d53e91"></stop><stop offset="0.761" stop-color="#cc39a4"></stop><stop offset="0.841" stop-color="#c837ab"></stop></radialGradient><radialGradient cx="51.86148" cy="34.40475" r="83.32733" gradientUnits="userSpaceOnUse" id="color-2_Xy10Jcu1L2Su_gr2"><stop offset="0" stop-color="#4168c9"></stop><stop offset="0.999" stop-color="#4168c9" stop-opacity="0"></stop></radialGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><path d="M86,135.88c-27.54796,0 -49.88,-22.33204 -49.88,-49.88v0c0,-27.54796 22.33204,-49.88 49.88,-49.88v0c27.54796,0 49.88,22.33204 49.88,49.88v0c0,27.54796 -22.33204,49.88 -49.88,49.88z" fill="#cccccc"></path><g><path d="M113.99712,136.28166l-55.9,0.0531c-12.298,0.01118 -22.36838,-10.03964 -22.38236,-22.33764l-0.0531,-55.9c-0.01118,-12.298 10.03964,-22.36838 22.33764,-22.38236l55.9,-0.0531c12.298,-0.01118 22.36838,10.03964 22.38236,22.33764l0.0531,55.9c0.01397,12.30079 -10.03964,22.37118 -22.33764,22.38236z" fill="url(#color-1_Xy10Jcu1L2Su_gr1)"></path><path d="M113.99712,136.28166l-55.9,0.0531c-12.298,0.01118 -22.36838,-10.03964 -22.38236,-22.33764l-0.0531,-55.9c-0.01118,-12.298 10.03964,-22.36838 22.33764,-22.38236l55.9,-0.0531c12.298,-0.01118 22.36838,10.03964 22.38236,22.33764l0.0531,55.9c0.01397,12.30079 -10.03964,22.37118 -22.33764,22.38236z" fill="url(#color-2_Xy10Jcu1L2Su_gr2)"></path><path d="M85.99961,105.56461c-10.7859,0 -19.565,-8.7763 -19.565,-19.565c0,-10.7887 8.77909,-19.565 19.565,-19.565c10.7859,0 19.565,8.7763 19.565,19.565c0,10.7887 -8.77909,19.565 -19.565,19.565zM85.99961,72.02461c-7.70581,0 -13.975,6.26918 -13.975,13.975c0,7.70581 6.26918,13.975 13.975,13.975c7.70581,0 13.975,-6.26918 13.975,-13.975c0,-7.70581 -6.26918,-13.975 -13.975,-13.975z" fill="#ffffff"></path><circle cx="38.26909" cy="23.26909" transform="scale(2.795,2.795)" r="1.5" fill="#ffffff"></circle><path d="M102.76961,122.33461h-33.54c-10.7859,0 -19.565,-8.7763 -19.565,-19.565v-33.54c0,-10.7887 8.77909,-19.565 19.565,-19.565h33.54c10.7859,0 19.565,8.7763 19.565,19.565v33.54c0,10.7887 -8.77909,19.565 -19.565,19.565zM69.22961,55.25461c-7.70581,0 -13.975,6.26918 -13.975,13.975v33.54c0,7.70581 6.26918,13.975 13.975,13.975h33.54c7.70581,0 13.975,-6.26918 13.975,-13.975v-33.54c0,-7.70581 -6.26918,-13.975 -13.975,-13.975z" fill="#ffffff"></path></g></g></svg></a>
+            <a href="https://www.gmail.com">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="58" height="58"
+              viewBox="0 0 48 48"
+              style=" fill:#000000;"><path fill="#f4511e" d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"></path><path fill="#fff" d="M34 19H36V27H34z"></path><path fill="#fff" d="M31 22H39V24H31zM27.815 22.2l-.05-.2H19v3h5.91c-.477 2.837-2.938 5-5.91 5-3.314 0-6-2.686-6-6s2.686-6 6-6c1.5 0 2.868.554 3.92 1.465l2.151-2.106C23.471 15.894 21.34 15 19 15c-4.971 0-9 4.029-9 9s4.029 9 9 9 9-4.029 9-9C28 23.383 27.934 22.782 27.815 22.2z"></path></svg></a>
+          </div>
+          <div class="form-actions" style="padding: 10px; margin: auto"><button type="button" class="btn btn-primary btn-sm">
+            <%= f.button :submit, "" %></button>
+          </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+          <div class="social-login" style="padding: 5px">
+          </div>
+          <p class="card-text">¿No tienes cuenta? Registrate </p>
+    <% end %>
 
 <%= render "devise/shared/links" %>
