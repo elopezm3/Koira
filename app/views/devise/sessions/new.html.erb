@@ -21,7 +21,7 @@
                         placeholder: "***************" %>
             <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
           </div>
-          <div class="signup-connect" class="d-grid gap-2 col-6 mx-auto">
+          <div class="signup-connect" class="d-grid gap-2 mx-auto" style="margin: 30px; text-align: center">
             <a href="https://www.facebook.com">
               <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
               width="55" height="55"
@@ -43,13 +43,15 @@
               viewBox="0 0 48 48"
               style=" fill:#000000;"><path fill="#f4511e" d="M24 4A20 20 0 1 0 24 44A20 20 0 1 0 24 4Z"></path><path fill="#fff" d="M34 19H36V27H34z"></path><path fill="#fff" d="M31 22H39V24H31zM27.815 22.2l-.05-.2H19v3h5.91c-.477 2.837-2.938 5-5.91 5-3.314 0-6-2.686-6-6s2.686-6 6-6c1.5 0 2.868.554 3.92 1.465l2.151-2.106C23.471 15.894 21.34 15 19 15c-4.971 0-9 4.029-9 9s4.029 9 9 9 9-4.029 9-9C28 23.383 27.934 22.782 27.815 22.2z"></path></svg></a>
           </div>
-          <div class="form-actions" style="padding: 10px; margin: auto"><button type="button" class="btn btn-primary btn-sm">
-            <%= f.button :submit, "" %></button>
+          <div class="d-grid gap-2 mx-auto">
+              <button class="btn btn-primary" type="button"><%= f.button :submit, "Iniciar sesión" %></button>
           </div>
-
-          <div class="social-login" style="padding: 5px">
-          </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+              <div class="social-login" style="padding: 5px">
+              </div>
+          <p></p>
           <p class="card-text">¿No tienes cuenta? Registrate </p>
+          </div>
     <% end %>
 
 <%= render "devise/shared/links" %>
