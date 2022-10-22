@@ -19,47 +19,51 @@ image = URI.open(avatar_url)
 admin.avatar.attach(io: image, filename: image_name, content_type: "image/png")
 admin.save
 
-owner = User.new
-owner.first_name = "Esteban"
-owner.last_name = "Lopez"
-owner.role = "customer"
-owner.email = "estebanlopez_99@hotmail.com"
-owner.password = 'koira123'
-owner.password_confirmation = 'koira123'
-avatar_url = "https://joeschmoe.io/api/v1/#{owner.first_name}"
-image_name = "#{owner.first_name}#{owner.last_name}.png"
-image = URI.open(avatar_url)
-owner.avatar.attach(io: image, filename: image_name, content_type: "image/png")
-owner.save
+5.times do # 50
+  user = User.new
+  user.first_name = Faker::Name.first_name
+  user.last_name = Faker::Name.last_name
+  user.email = Faker::Internet.email
+  user.role = ["seller", "customer"].sample
+  user.password = 'koira123'
+  user.password_confirmation = 'koira123'
+  avatar_url = "https://joeschmoe.io/api/v1/#{admin.first_name}"
+  image_name = "#{user.first_name}#{user.last_name}.png"
+  image = URI.open(avatar_url)
+  user.avatar.attach(io: image, filename: image_name, content_type: "image/png")
+  user.save
+end
 
-customer = User.new
-customer.first_name = "Pepito"
-customer.last_name = "Pérez"
-customer.role = "customer"
-customer.email = "pepito_99@hotmail.com"
-customer.password = 'koira123'
-customer.password_confirmation = 'koira123'
-avatar_url = "https://joeschmoe.io/api/v1/#{customer.first_name}"
-image_name = "#{customer.first_name}#{customer.last_name}.png"
-image = URI.open(avatar_url)
-customer.avatar.attach(io: image, filename: image_name, content_type: "image/png")
-customer.save
-
-business = Business.new
-business.name = "Los Pollos Hermanos"
-business.address = "Calle 30 C Sur # 50-34"
-business.latitude = "1234"
-business.longitude = "5678"
-owner.role = "seller"
-owner.save
-business.owner = owner
-business.description = "Nice place"
-business.type_of_business = "restaurant"
-file = URI.open("https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/hc_876x493/public/media/image/2015/05/474316-pollos-hermanos-breaking-bad-pueden-convertirse-restaurante-real.jpg?itok=YA3n0gfV")
-business.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-file = URI.open("https://blog-eeuu.com/wp-content/uploads/2018/08/breaking-bad-logo.jpeg")
-business.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-business.save
+restaurants_images = ["https://images.pexels.com/photos/1058435/pexels-photo-1058435.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/6127316/pexels-photo-6127316.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/784633/pexels-photo-784633.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/2253643/pexels-photo-2253643.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/541216/pexels-photo-541216.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/735869/pexels-photo-735869.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1395967/pexels-photo-1395967.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/687824/pexels-photo-687824.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/64208/pexels-photo-64208.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1833349/pexels-photo-1833349.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/299348/pexels-photo-299348.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1211887/pexels-photo-1211887.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/995743/pexels-photo-995743.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/2122294/pexels-photo-2122294.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1251196/pexels-photo-1251196.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1861785/pexels-photo-1861785.jpeg?auto=compress&cs=tinysrgb&w=600"]
+bars_images = ["https://images.pexels.com/photos/63633/bar-local-cong-ireland-63633.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/159291/beer-machine-alcohol-brewery-159291.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1089930/pexels-photo-1089930.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267693/pexels-photo-1267693.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267360/pexels-photo-1267360.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267323/pexels-photo-1267323.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267265/pexels-photo-1267265.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/301692/pexels-photo-301692.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/274194/pexels-photo-274194.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/2079453/pexels-photo-2079453.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1301547/pexels-photo-1301547.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/340996/pexels-photo-340996.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/2796105/pexels-photo-2796105.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1128259/pexels-photo-1128259.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/3355400/pexels-photo-3355400.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/2611814/pexels-photo-2611814.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1267342/pexels-photo-1267342.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/946118/pexels-photo-946118.jpeg?auto=compress&cs=tinysrgb&w=600"]
+5.times do # 30
+  business = Business.new
+  business.type_of_business = ["restaurant", "bar"].sample
+  business.address = Faker::Address.street_address
+  if business.type_of_business == "restaurant"
+    business.name = Faker::Restaurant.name
+    business.description = Faker::Restaurant.description
+    5.times do
+      photo_url = restaurants_images.sample
+      photo_name = "#{business.name}#{rand(1..100)}.png"
+      photo = URI.open(photo_url)
+      business.photos.attach(io: photo, filename: photo_name, content_type: "image/png")
+    end
+  else
+    business.name = "Bar #{Faker::Restaurant.name}"
+    business.description = Faker::Restaurant.description
+    5.times do
+      photo_url = bars_images.sample
+      photo_name = "#{business.name}#{rand(1..100)}.png"
+      photo = URI.open(photo_url)
+      business.photos.attach(io: photo, filename: photo_name, content_type: "image/png")
+    end
+  end
+  sellers = User.where(role: "seller")
+  business.owner = sellers.sample
+  business.save
+end
+=begin
 
 category = Category.create(name: "sea food")
 
@@ -102,3 +106,4 @@ review2.calification = 1
 review2.comment = "It was bad"
 review2.purchase = purchase
 review2.save
+=end
