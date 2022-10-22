@@ -6,23 +6,23 @@ class CategoryPolicy < ApplicationPolicy
     # end
   end
 
-  def new
+  def new?
     user.role == "admin"
   end
 
-  def create
+  def create?
     user.role == "admin"
   end
 
-  def edit
+  def edit?
     user.role == "admin"
   end
 
-  def update
+  def update?
     user.role == "admin"
   end
 
-  def destroy
+  def destroy?
     user.role == "admin"
   end
 end

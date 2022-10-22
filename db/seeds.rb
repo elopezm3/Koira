@@ -13,7 +13,7 @@ admin.role = "customer"
 admin.email = "estebanlopez_99@hotmail.com"
 admin.password = 'koira123'
 admin.password_confirmation = 'koira123'
-avatar_url = "https://joeschmoe.io/api/v1/#{owner.first_name}"
+avatar_url = "https://joeschmoe.io/api/v1/#{admin.first_name}"
 image_name = "#{admin.first_name}#{admin.last_name}.png"
 image = URI.open(avatar_url)
 admin.avatar.attach(io: image, filename: image_name, content_type: "image/png")
