@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get "/pages/supplier", to: "pages#supplier", as: "supplier"
   resources :businesses, only: [:index, :update, :show, :destroy]
   get "/user_id/businesses/new", to: "businesses#new", as: "new_user_business"
-  #post "/users/:user_id/businesses", to: "businesses#create", as: "create_user_business"
-  get "/users/:user_id/businesses", to: "businesses#create", as: "create_user_business"
+  post "/users/:user_id/businesses", to: "businesses#create", as: "create_user_business"
+  #get "/users/:user_id/businesses", to: "businesses#create", as: "create_user_business"
   get "/users/:user_id/user_interests/new", to: "user_interests#new", as: "new_user_interest"
   post "/users/:user_id/user_interests", to: "user_interests#create", as: "create_user_interest"
   resources :purchases, only: [:show]

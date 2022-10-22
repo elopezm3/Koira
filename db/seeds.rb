@@ -63,6 +63,17 @@ bars_images = ["https://images.pexels.com/photos/63633/bar-local-cong-ireland-63
   business.owner = sellers.sample
   business.save
 end
+
+
+product = ProductOrService.new
+product.category = category
+product.price = 10
+product.business = business
+product.name = Faker::Restaurant.name # buscar faker product
+product.description = Faker::Restaurant.description # buscar el faker product
+file = 
+
+
 =begin
 
 category = Category.create(name: "sea food")
