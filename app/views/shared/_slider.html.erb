@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>swiper demo</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
+    <style>
+      body {
+        margin: 20;
+      }
+      .swiper-hero {
+        width: 99%;
+        max-width: 1600px;
+      }
+
+      .swiper-hero .swiper-slide {
+        width: 250px;
+      }
+
+      .swiper-hero img {
+        height: 255px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      @media (min-width: 1024px) {
+        .swiper-hero img {
+          height: 344px;
+        }
+      }
+
+      .swiper-hero .swiper-button-prev,
+      .swiper-hero .swiper-button-next {
+        --swiper-navigation-size: 20px;
+        background-color: white;
+        height: 70px;
+        width: 50px;
+        margin-top: -35px;
+
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .swiper-hero .swiper-button-prev {
+        border-radius: 0 65px 65px 0;
+        left: -10px;
+      }
+      .swiper-hero .swiper-button-next {
+        border-radius: 65px 0 0 65px;
+        right: -10px;
+      }
+
+      .swiper-hero:hover .swiper-button-prev,
+      .swiper-hero:hover .swiper-button-next {
+        opacity: 1;
+      }
+
+      .swiper-hero .swiper-pagination {
+        --swiper-pagination-color: white;
+        --swiper-pagination-bullet-size: 6px;
+        --swiper-pagination-bullet-inactive-color: #000;
+        --swiper-pagination-bullet-inactive-opacity: 0.25;
+        --swiper-pagination-bullet-opacity: 1;
+        --swiper-pagination-bullet-horizontal-gap: 2px;
+      }
+
+      .swiper-hero .swiper-pagination-bullet {
+        box-shadow: inset 0 0 0 1px #fff;
+      }
+
+      .swiper-hero .swiper-pagination-bullet-active {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Slider main container -->
+    <div class="swiper swiper-hero">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide"><%= image_tag "food5.jpg" %>
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Burbun en reducción de aromas</h5>
+            <p>La Provincia - Buenos Aires</p>
+            </div>
+        </div>
+        <div class="swiper-slide"><%= image_tag "silvestre1.jpg" %>
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Silvestre morado</h5>
+            <p>Coolto - Medellín</p>
+            </div>
+        </div>
+        <div class="swiper-slide"><%= image_tag "party1.jpg" %>
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Fiesta de neo y colores</h5>
+            <p>Zona E - Llano grande </p>
+            </div>
+        </div>
+        <div class="swiper-slide"><%= image_tag "food4.jpg" %>
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Hongos & Setas</h5>
+            <p>Montaña Magica - Santa Elena</p>
+            </div>
+        </div>
+        <div class="swiper-slide"><%= image_tag "3trigos.jpg" %>
+            <div class="carousel-caption d-none d-md-block">
+            <h5>3 Trigos</h5>
+            <p>Gato Negro - Cartagena</p>
+            </div>
+        </div>
+          <div class="swiper-slide"><%= image_tag "banner2.jpg" %>
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Tequila old style.</h5>
+            <p>La octava - Medellín</p>
+            </div>
+        </div>
+        <div class="swiper-slide"><%= image_tag "food6.jpg" %>
+            <div class="carousel-caption d-none d-md-block">
+            <h5>Tres Tiempos</h5>
+            <p>View - Santa Marta</p>
+            </div>
+        </div>
+        <div class="swiper-slide"><%= image_tag "party.jpg" %>
+            <div class="carousel-caption d-none d-md-block">
+            <h5>House & Techno</h5>
+            <p>Clandestino</p>
+            </div>
+        </div>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <!-- <div class="swiper-scrollbar"></div> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".swiper-hero", {
+        // Optional parameters
+         // slidesPerView: "auto",
+         spaceBetween: 15,
+        // slidesPerGroupAuto: true,
+
+        direction: "horizontal",
+        loop: true,
+        // allowTouchMove: true,
+        effect: "cube",
+        autoplay: {
+          delay: 8000,
+          pauseOnMouseEnter: true,
+          disableOnInteraction: false,
+        },
+
+        // If we need pagination
+        pagination: {
+          el: ".swiper-pagination",
+          // type: "progressbar"
+          clickable: true,
+          // dynamicBullets: true
+        },
+
+        // Navigation arrows
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+
+        // And if we need scrollbar
+        // scrollbar: {
+        //   el: ".swiper-scrollbar",
+        //   draggable: true,
+        // },
+      });
+    </script>
+  </body>
+</html>

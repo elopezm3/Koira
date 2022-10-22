@@ -5,6 +5,20 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+admin = User.new
+admin.first_name = "Admin"
+admin.last_name = ""
+admin.role = "customer"
+admin.email = "estebanlopez_99@hotmail.com"
+admin.password = 'koira123'
+admin.password_confirmation = 'koira123'
+avatar_url = "https://joeschmoe.io/api/v1/#{owner.first_name}"
+image_name = "#{admin.first_name}#{admin.last_name}.png"
+image = URI.open(avatar_url)
+admin.avatar.attach(io: image, filename: image_name, content_type: "image/png")
+admin.save
+
 owner = User.new
 owner.first_name = "Esteban"
 owner.last_name = "Lopez"

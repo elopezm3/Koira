@@ -7,7 +7,7 @@ Businesses
 Products or Services
 <% if @product_or_services %>
   <% @product_or_services.each do |product_service| %>
-    <%= business.name %>
+    <%= link to business_path(product_service.business), product_service.name %>
   <% end %>
 <% end %>
 Categories
