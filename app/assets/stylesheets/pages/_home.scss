@@ -1,1 +1,66 @@
-// Specific CSS for your home-page
+Specific CSS for your home-page
+#carouselExampleControls {
+  border: #bbbbbb solid 1px;
+  border-radius: 20px;
+  margin: 40px;
+}
+
+.businesses {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.businesses_slide-restaurantes {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 300px;
+  max-width: 656px;
+  height: 414px;
+  flex-direction: column;
+  margin: 0 12px;
+}
+
+.businesses_slide-bares {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 300px;
+  max-width: 672px;
+  height: 414px;
+  flex-direction: column;
+  margin: 0 12px;
+}
+
+#businesses_cards {
+  display: flex;
+}
+
+#businesses_container-card {
+  padding: 20px;
+  border: solid 1px #bbbbbb;
+  height: 336px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 672px;
+  border-radius: 30px;
+}
+
+#slide_card {
+  flex-direction: column !important;
+  margin: 0 8px;
+  border-radius: 30px;
+  justify-content: space-between;
+}
+
+#business-image {
+  width: 100%;
+  height: 50%;
+  border-radius: 30px 30px 0 0;
+}
+
+#business_info {
+  width: 100%;
+  height: 50%;
+}
