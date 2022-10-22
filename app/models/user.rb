@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :user_interests
   has_many :purchases
   has_many :businesses
+  has_many :reviews
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :role, presence: true, inclusion: { in: ["admin", "seller", "customer"] }

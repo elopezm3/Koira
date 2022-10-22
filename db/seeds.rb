@@ -64,57 +64,112 @@ bars_images = ["https://images.pexels.com/photos/63633/bar-local-cong-ireland-63
   business.save
 end
 
+food_categories = [["Sea", "https://images.pexels.com/photos/566345/pexels-photo-566345.jpeg?auto=compress&cs=tinysrgb&w=1600"], ["Fast", "https://images.pexels.com/photos/750073/pexels-photo-750073.jpeg?auto=compress&cs=tinysrgb&w=1600"], ["Italian", "https://images.pexels.com/photos/2295285/pexels-photo-2295285.jpeg?auto=compress&cs=tinysrgb&w=1600"], ["Mexican", "https://images.pexels.com/photos/2092897/pexels-photo-2092897.jpeg?auto=compress&cs=tinysrgb&w=1600"], ["Oriental", "https://images.pexels.com/photos/2092897/pexels-photo-2092897.jpeg?auto=compress&cs=tinysrgb&w=1600"], ["Chinese", "https://images.pexels.com/photos/33162/food-restaurant-menu-asia.jpg?auto=compress&cs=tinysrgb&w=1600"]]
+food_categories.each do |f_category|
+  category = Category.new
+  category.name = f_category[0]
+  photo_url = f_category[1]
+  photo_name = "#{f_category[0]}#{rand(1..100)}.png"
+  photo = URI.open(photo_url)
+  category.photo.attach(io: photo, filename: photo_name, content_type: "image/png")
+  category.save
+end
+categories = Category.all
+food_images = ["https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600","https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/255501/pexels-photo-255501.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=600", "https://media.istockphoto.com/photos/table-top-view-of-spicy-food-picture-id1316145932?b=1&k=20&m=1316145932&s=612x612&w=0&h=46RQvBvA9rV7LBhzZZdbG5SeCZErZqmopUKOQTF6oTc=", "https://media.istockphoto.com/photos/foods-high-in-vitamin-c-picture-id1270726834?b=1&k=20&m=1270726834&s=612x612&w=0&h=2Qq3Vv0-JleyBmgtiLPES7ioTjZ1cz3rpjNIvWlxtGU=", "https://media.istockphoto.com/photos/paleo-diet-healthy-food-background-picture-id1301565375?b=1&k=20&m=1301565375&s=612x612&w=0&h=f4ANJ7QrvqDjVtH0dzIg0z3k5id_H_ORiPrmrma7gFA=", "https://media.istockphoto.com/photos/top-view-of-tomato-salad-arugula-avocado-lemon-in-white-plate-on-pink-picture-id1330176470?b=1&k=20&m=1330176470&s=612x612&w=0&h=ryhSWbpCdkc_obTYB5uTkOmWimJaIgSfp7BveK-qKX0=", "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/357573/pexels-photo-357573.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=600https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=600"]
+drink_images = ["https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/340996/pexels-photo-340996.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/109275/pexels-photo-109275.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/461415/pexels-photo-461415.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/1187766/pexels-photo-1187766.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/616836/pexels-photo-616836.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/339696/pexels-photo-339696.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/616840/pexels-photo-616840.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/128242/pexels-photo-128242.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/1194030/pexels-photo-1194030.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/736188/pexels-photo-736188.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/736188/pexels-photo-736188.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/357577/pexels-photo-357577.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/1304540/pexels-photo-1304540.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/110472/pexels-photo-110472.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2480828/pexels-photo-2480828.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/1233319/pexels-photo-1233319.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/602750/pexels-photo-602750.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/2109099/pexels-photo-2109099.jpeg?auto=compress&cs=tinysrgb&w=1600", "https://images.pexels.com/photos/1189257/pexels-photo-1189257.jpeg?auto=compress&cs=tinysrgb&w=1600"]
+services = [["Marriage night", "20 dishes and 20 drinks of your choice"], ["Date night", "2 dishes, 2 drinks and 2 desserts of your choice"], ["Family Combo", "Big meal for 5 people "], ["Halloween dinner", "Special meal from the house (limited for this month)"], ["Happy Experience", "50 drinks of your choice"], ["Free drinks", "All you can drink in 30 minutes"]]
+services_images = ["https://images.pexels.com/photos/8204317/pexels-photo-8204317.jpeg?auto=compress&cs=tinysrgb&w=600","https://images.pexels.com/photos/8204318/pexels-photo-8204318.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/5713659/pexels-photo-5713659.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/7061746/pexels-photo-7061746.jpeg?auto=compress&cs=tinysrgb&w=600", "https://media.istockphoto.com/photos/we-are-going-to-party-as-if-theres-no-tomorrow-picture-id1279483477?b=1&k=20&m=1279483477&s=612x612&w=0&h=h5oLCfgFa48ovozg2-SRDvDKSChjtNVQjSDvHiuNjSY=", "https://media.istockphoto.com/photos/lady-at-the-new-years-eve-party-picture-id1193488504?k=20&m=1193488504&s=612x612&w=0&h=RHejo66iGbqs70I2UnYrAowMdWH9BaCfrtyz7n_i5Io=", "https://media.istockphoto.com/photos/friends-make-the-world-a-better-place-picture-id974949758?k=20&m=974949758&s=612x612&w=0&h=aKHORxG_wWLCpstH8-cMRL_dIyAjNTx4QWQefqyVdhQ=", "https://media.istockphoto.com/photos/shiny-new-year-celebration-picture-id1189941811?k=20&m=1189941811&s=612x612&w=0&h=lelOI2qCfg0_lmgk3gRg4YLdTE9os0Jt91JlEKw9x24=", "https://media.istockphoto.com/photos/rock-concert-picture-id1155892990?k=20&m=1155892990&s=612x612&w=0&h=n4efaRKNIiun0R3j2aFAusCAmI5RtDX9Cr410LcfOwI=", "https://media.istockphoto.com/photos/couple-at-christmas-picture-id527012595?k=20&m=527012595&s=612x612&w=0&h=1P15Hd73P7rr9dh732xzIQ7vQbVsT7t33-2SxgRY6VM=", "https://media.istockphoto.com/photos/friends-night-out-at-karaoke-dance-bar-picture-id1403519680?k=20&m=1403519680&s=612x612&w=0&h=sXWtFA4jM3GdoG6XXfS52FXOkHCkW-MwtpNRR5rewbg=", "https://media.istockphoto.com/photos/young-people-in-colorful-beams-on-lasertag-arena-picture-id981864242?k=20&m=981864242&s=612x612&w=0&h=7Zx7uTsRM9kykDPd0Oy0zYdoVS7JeCi0Qx00elPIjtU=", "https://media.istockphoto.com/photos/back-view-of-happy-women-talking-on-a-music-festival-at-night-picture-id1404156872?k=20&m=1404156872&s=612x612&w=0&h=8Kx-tXPbuwnRbYKk1M06xazFWK8UiMmSpj5XzqPRFZM=", "https://media.istockphoto.com/photos/people-in-vests-and-with-laser-pistols-playing-emotionally-laser-picture-id1198282405?k=20&m=1198282405&s=612x612&w=0&h=a_ij2l0Oa1mhTOiBuUAl4N5awhMShMVNS9iVuaH2jKc=", "https://media.istockphoto.com/photos/selfie-with-my-girls-picture-id1225854746?k=20&m=1225854746&s=612x612&w=0&h=pBsPc-K_ggyXSE93UEQeWk4HJnHNcBUPd_Dgr_eOOfg=", "https://media.istockphoto.com/photos/couple-on-a-date-picture-id871870942?k=20&m=871870942&s=612x612&w=0&h=9tYAYQoSbGuH0k6ydsne9Qed2VjScpR8lzzuZRSSW6g=", "https://media.istockphoto.com/photos/couple-on-a-date-picture-id871873834?k=20&m=871873834&s=612x612&w=0&h=NsvZOx4JZdd86wu7kBG-9BuQGhtvkfK9praGzdunedI=", "https://media.istockphoto.com/photos/romantically-proposing-picture-id505049025?k=20&m=505049025&s=612x612&w=0&h=lmMW_g9XDwoiMAsMX9M3cSKZzwTMYTNQI2UrlGrDWcA=", "https://images.pexels.com/photos/4112237/pexels-photo-4112237.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/7706438/pexels-photo-7706438.jpeg?auto=compress&cs=tinysrgb&w=600"]
 
-product = ProductOrService.new
-product.category = category
-product.price = 10
-product.business = business
-product.name = Faker::Restaurant.name # buscar faker product
-product.description = Faker::Restaurant.description # buscar el faker product
-file = 
+businesses = Business.all
+businesses.each do |business|
+  5.times do
+    food = ProductOrService.new
+    food.type_product_service = "product"
+    food.type_of_product = "food"
+    food.category = categories.sample
+    food.price = rand(10..20)
+    food.name = Faker::Food.dish
+    food.description = Faker::Food.description
+    food.business = business
+    5.times do
+      photo_url = food_images.sample
+      photo_name = "#{food.name}#{rand(1..100)}.png"
+      photo = URI.open(photo_url)
+      food.photos.attach(io: photo, filename: photo_name, content_type: "image/png")
+    end
+    food.save
+  end
+  5.times do
+    drink = ProductOrService.new
+    drink.type_product_service = "product"
+    drink.type_of_product = "drink"
+    drink.category = categories.sample
+    drink.price = rand(10..20)
+    drink.name = Faker::Beer.name
+    drink.description = Faker::Beer.style
+    drink.business = business
+    5.times do
+      photo_url = drink_images.sample
+      photo_name = "#{drink.name}#{rand(1..100)}.png"
+      photo = URI.open(photo_url)
+      drink.photos.attach(io: photo, filename: photo_name, content_type: "image/png")
+    end
+    drink.save
+  end
+  2.times do
+    service = ProductOrService.new
+    service.type_product_service = "service"
+    service.category = categories.sample
+    service.price = rand(40..60)
+    service_sample = services.sample
+    service.name = service_sample[0]
+    service.description = service_sample[1]
+    service.business = business
+    service.type_of_product = ""
+    5.times do
+      photo_url = services_images.sample
+      photo_name = "#{service.name}#{rand(1..100)}.png"
+      photo = URI.open(photo_url)
+      service.photos.attach(io: photo, filename: photo_name, content_type: "image/png")
+    end
+    service.save
+  end
+end
 
-
-=begin
-
-category = Category.create(name: "sea food")
-
-product = ProductOrService.new
-product.category = category
-product.price = 10
-product.business = business
-product.name = "Pollo"
-product.description = "Crispy Chicken With fries"
-file = URI.open("https://www.comedera.com/wp-content/uploads/2018/08/pollo-frito.jpg")
-product.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-file = URI.open("https://img.taste.com.au/ol2Jq8ZQ/taste/2016/11/rachel-87711-2.jpeg")
-product.photos.attach(io: file, filename: "nes.png", content_type: "image/png")
-product.type_product_service = "product"
-product.save
-
-purchase = Purchase.new
-purchase.buyer = customer
-purchase.user_name = "#{customer.first_name} #{customer.last_name}"
-purchase.phone = "3215641205"
-purchase.date = Date.new(2022, 11, 18)
-purchase.time = Time.new(purchase.date.year, purchase.date.month, purchase.date.month, 13, 30, 0, "+09:00").utc
-purchase.comments = "Please everything be hot"
-purchase.number_of_people = 4
-purchase.save
-
-purchase_item = PurchaseItem.new
-purchase_item.purchase = purchase
-purchase_item.product_or_service = product
-purchase_item.save
-
-review1 = Review.new
-review1.calification = 4
-review1.comment = "It was nice"
-review1.purchase = purchase
-review1.save
-
-review2 = Review.new
-review2.calification = 1
-review2.comment = "It was bad"
-review2.purchase = purchase
-review2.save
-=end
+reviews_hash = {1 => "Awful", 2 => "It was very bad", 3 => "Not so bad", 4 => "Nice product", 5 => "Amazing"}
+5.times do # 100
+  purchase = Purchase.new
+  buyer = User.all.sample
+  purchase.buyer = buyer
+  purchase.user_name = "#{buyer.first_name} #{buyer.last_name}"
+  purchase.phone = Faker::PhoneNumber.cell_phone
+  date = Date.tomorrow + (rand * 21)
+  purchase.date = date
+  purchase.time = Time.new(date.year, date.month, date.month, 13, 30, 0, "+09:00").utc
+  purchase.comments = Faker::TvShows::Friends.quote
+  purchase.number_of_people = rand(1..10)
+  purchase.save
+  purchase_item = PurchaseItem.new
+  purchase_item.purchase = purchase
+  food = ProductOrService.where(type_of_product: "food")
+  purchase_item.product_or_service = food.sample
+  purchase_item.save
+  purchase_item = PurchaseItem.new
+  purchase_item.purchase = purchase
+  drink = ProductOrService.where(type_of_product: "drink")
+  purchase_item.product_or_service = drink.sample
+  purchase_item.save
+  purchase_item = PurchaseItem.new
+  purchase_item.purchase = purchase
+  service = ProductOrService.where(type_product_service: "service")
+  purchase_item.product_or_service = service.sample
+  purchase_item.save
+  5.times do
+    review = Review.new
+    review.calification = rand(1..5)
+    review.comment = reviews_hash[review.calification]
+    review.purchase = purchase
+    review.user = User.all.sample
+    review.save
+  end
+end
