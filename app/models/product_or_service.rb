@@ -16,7 +16,7 @@ class ProductOrService < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :type_product_service, presence: true, inclusion: { in: ["product", "service"] }
-  validates :type_of_product, inclusion: { in: ["food", "drink"] }
+  validates :type_of_product, inclusion: { in: ["food", "drink", ""] }
   def price_cannot_be_negative
     if price <= 0
       errors.add(:price, "has to be greater than 0")
