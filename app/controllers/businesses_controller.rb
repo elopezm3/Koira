@@ -23,6 +23,7 @@ class BusinessesController < ApplicationController
   end
 
   def create
+    current_user.role = "seller"
     @business = Business.new(business_params)
     @business.owner = current_user
     # important latitude and longitud to run.
@@ -60,4 +61,3 @@ class BusinessesController < ApplicationController
     params.require(:business).permit(:name, :address, :description, :type_of_business, :photos)
   end
 end
-
