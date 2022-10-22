@@ -1,10 +1,11 @@
-<div class=" form_cocktail container m-3">
-  <%= simple_form_for @business do |f| %>
+<div class="container m-3">
+  <%= simple_form_for [current_user, @business] do |f| %>
     <%= f.input :name, required: true %>
+    <%= f.input :address, required: true %>
     <%= f.input :description, required: true %>
     <%= f.label :type_of_business, "type_of_business:"   %>
-    <%= f.collection_radio_buttons :type_of_business, [["pub", 'Bar'], ["restaurant", 'Restaurante']], :first, :last%>
-    <%= f.input :photo, as: :file, required: true %>
+    <%= f.collection_radio_buttons :type_of_business, [["bar", 'Bar'], ["restaurant", 'Restaurante']], :first, :last%>
+    <%= f.input :photos, as: :file, required: true, input_html: { multiple: true } %>
     <%= f.button :submit, required: true, class:"btn btn-primary" %>
   <% end %>
 </div>
