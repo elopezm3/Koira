@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html>
 
+  <head>
+    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" href="main.css">
+
+  </head>
+  <body>
+
+  <div class="card" style="margin: 30px; text-align: center">
+      <div class="container">
+          <h1>Dar a conocer tu negocio mientras aumentas tus ingresos</h1>
+          <p>Brindar experiencias unicas en 2500 ciudades y 192 paises.</p>
+      </div>
+      <div class="d-grid gap-2 mx-auto" style="margin: 30px; text-align: center">
+          <% if !current_user %>
+          <button type="button" class="btn btn-outline-primary"><%= link_to "Iniciar sesión", new_user_session_path %></button>
+          <button type="button" class="btn btn-outline-success"><%= link_to "Registrase", new_user_registration_path %></button></a>
+          <%end%>
+      </div>
+  </div>
+  <div class="card" style="width: 20rem; margin: 30px; text-align: center">
+      <div class="card" style="width: 20rem">
+        <h2>Los negocios de tu zona:</h2>
+          <div class="card">
+          <p>Ganan en promedio $150.000 pesos por persona</p>
+          <a href="">Learn More About Us</a>
+          </div>
+          <div class="card">
+          <p>Tienen 17 reservas mas por día</p>
+          <a href="">Learn More About Us</a>
+          </div>
+      </div>
+  </div>
+  <div>
+  </div>
+   <div class="learn-more">
+	  <div class="container">
+		  <div class="row">
+		      <div class="col-md-4">
+    			<h3>Travel</h3>
+    			<p>From apartments and rooms to treehouses and boats: stay in unique spaces in 192 countries.</p>
+    			<p><a href="https://www.airbnb.com/help/getting-started/how-to-travel">See how to travel on Airbnb</a></p>
+    	      </div>
+
+    		  <div class="col-md-4">
+    			<h3>Host</h3>
+    			<p>Renting out your unused space could pay your bills or fund your next vacation.</p>
+    			<p><a href="https://www.airbnb.com/help/getting-started/how-to-host">Learn more about hosting</a></p>
+    		  </div>
+
+    		  <div class="col-md-4">
+    			<h3>Trust and Safety</h3>
+    			<p>From Verified ID to our worldwide customer support team, we've got your back.</p>
+    			<p><a href="https://www.airbnb.com/trust">Learn about trust at Airbnb</a></p>
+    		  </div>
+	    </div>
+	  </div>
+  </body>
+</html>
