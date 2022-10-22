@@ -31,6 +31,7 @@ class BusinessesController < ApplicationController
     else
       render :new
     end
+  end
 
   def destroy
     @business.destroy
@@ -59,3 +60,4 @@ class BusinessesController < ApplicationController
     params.require(:business).permit(:name, :address, :description, :type_of_business, :photos)
   end
 end
+
