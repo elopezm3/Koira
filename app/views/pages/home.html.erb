@@ -1,2 +1,173 @@
+<<<<<<< HEAD
 <%= render "shared/slider" %>
 # Basado en el figma cree las variables, pueden usar @bars, @restaurants y @businesses_most_visited, los cuales muestran los 10 businesses que muestran más purchases, ya ustedes dirán si ajustamos ese número (10) a otro o si quieren mostrar algo diferente nos dicen
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- Demo styles -->
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      @media (max-width: 760px) {
+        .swiper-button-next {
+          right: 20px;
+        }
+
+        .swiper-button-prev {
+          left: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="businesses">
+      <div class="businesses_slide-bares">
+        <h2>Bares</h2>
+        <div id="businesses_container-card">
+          <div class="swiper">
+            <div id="businesses_card-bares"class="swiper-wrapper">
+              <div id="slide_card" class="swiper-slide">
+                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+                <div id="business_info">
+                  <h2>Bar Name</h2>
+                  <button>Conocer Más</button>
+                </div>
+              </div>
+              <div id="slide_card" class="swiper-slide">
+                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+                <div id="business_info">
+                  <h2>Bar Name</h2>
+                  <button>Conocer Más</button>
+                </div>
+              </div>
+              <div id="slide_card" class="swiper-slide"><img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+                <div id="business_info">
+                  <h2>Bar Name</h2>
+                  <button>Conocer Más</button>
+                </div></div>
+              <div id="slide_card" class="swiper-slide">
+                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+                <div id="business_info">
+                  <h2>Bar Name</h2>
+                  <button>Conocer Más</button>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+      <div class="businesses_slide-restaurantes">
+        <h2>Restaurantes</h2>
+        <div id="businesses_container-card">
+          <div class="swiper">
+            <div id="businesses_slide-restaurantes"class="swiper-wrapper">
+              <div id="slide_card" class="swiper-slide">
+                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+                <div id="business_info">
+                  <h2>Bar Name</h2>
+                  <button>Conocer Más</button>
+                </div>
+              </div>
+              <div id="slide_card" class="swiper-slide">
+                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+                <div id="business_info">
+                  <h2>Bar Name</h2>
+                  <button>Conocer Más</button>
+                </div>
+              </div>
+              <div id="slide_card" class="swiper-slide">
+                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+                <div id="business_info">
+                  <h2>Bar Name</h2>
+                  <button>Conocer Más</button>
+                </div>
+              </div>
+              <div id="slide_card" class="swiper-slide">
+                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+                <div id="business_info">
+                  <h2>Bar Name</h2>
+                  <button>Conocer Más</button>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper('.swiper', {
+        slidesPerView: 2,
+        direction: getDirection(),
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        on: {
+          resize: function () {
+            swiper.changeDirection(getDirection());
+          },
+        },
+      });
+
+      function getDirection() {
+        var windowWidth = window.innerWidth;
+        var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+        return direction;
+      }
+    </script>
+  </body>
+</html>
+>>>>>>> 7c42e8ada39fbb9efe95c8d3306c98f3109a3f3e

@@ -2,7 +2,20 @@
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
   <%= f.error_notification %>
+<<<<<<< HEAD
     <div class="form-inputs">
+=======
+
+  <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "First Name" }%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Last Name" }%>
+>>>>>>> 7c42e8ada39fbb9efe95c8d3306c98f3109a3f3e
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -14,7 +27,12 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+<<<<<<< HEAD
     </div>
+=======
+    <%= f.hidden_field :role, value: "customer"%>
+  </div>
+>>>>>>> 7c42e8ada39fbb9efe95c8d3306c98f3109a3f3e
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
