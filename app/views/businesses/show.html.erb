@@ -1,0 +1,56 @@
+<% if @business.owner == current_user %>
+  <%= link_to "Add a product or service", new_business_product_or_service_path(@business) %>
+<% end %>
+
+<%= form_with url: add_path, method: :post do |f| %>
+  <% @services.each do |service| %>
+    <%= service.name %>
+    <%= service.description %>
+    Category: <%= service.category.name %>
+    Price: <%= service.price %>
+    <% service.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <%= f.check_box service.id %>
+    <%= f.label service.id, "Add" %>
+  <% end %>
+
+  <% @food.each do |food| %>
+    <%= food.name %>
+    <%= food.description %>
+    Category: <%= food.category.name %>
+    Price: <%= food.price %>
+    <% food.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <%= f.check_box food.id %>
+    <%= f.label food.id, "Add" %>
+  <% end %>
+
+  <% @drinks.each do |drink| %>
+    <%= drink.name %>
+    <%= drink.description %>
+    Category: <%= drink.category.name %>
+    Price: <%= drink.price %>
+    <% drink.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <%= f.check_box drink.id %>
+    <%= f.label drink.id, "Add" %>
+  <% end %>
+  <h2>Form reservation:</h2>
+  <%= f.check_box :user_name_check %>
+  <%= f.label :user_name_check, "If the reservation is for someone different than you, please check this" %>
+  <%= f.text_field :user_name %>
+  <%= f.label :user_name, "If the reservation is for someone different than you, please fill here the name" %>
+  <%= f.date_field :date %>
+  <%= f.time_field :time %>
+  <%= f.label :date, "When do you need the reservation?" %>
+  <%= f.text_field :comments %>
+  <%= f.label :comments, "If there is something we need to take into account or any other aditional comments, please let us know" %>
+  <%= f.telephone_field :phone %>
+  <%= f.label :phone, "Please enter your phone" %>
+  <%= f.number_field :number_of_people, in: 1..50, step: 1 %>
+  <%= f.label :number_of_people, "Let us know for how many people is the reservation" %>
+  <%= f.submit "Book in this restaurant" %>
+<% end %>

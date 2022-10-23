@@ -141,6 +141,30 @@
         </div>
       </div>
     </div>
+    <% if @bars %>
+      <% @bars.each do |bar| %>
+        <%= link_to bar.name, business_path(bar) %>
+        <% bar.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if @restaurants %>
+      <% @restaurants.each do |restaurant| %>
+        <%= link_to restaurant.name, business_path(restaurant) %>
+        <% restaurant.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if @businesses_most_visited %>
+      <% @businesses_most_visited.each do |business| %>
+        <%= link_to business.name, business_path(business) %>
+        <% business.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
+    <% end %>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <!-- Initialize Swiper -->

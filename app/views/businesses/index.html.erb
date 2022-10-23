@@ -1,7 +1,7 @@
 Businesses
 <% if @businesses %>
   <% @businesses.each do |business| %>
-    <%= business.name %>
+    <%= link_to business.name, business_path(business) %>
     <% business.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
@@ -10,12 +10,16 @@ Businesses
 Products or Services
 <% if @product_or_services %>
   <% @product_or_services.each do |product_service| %>
-    <%= link to business_path(product_service.business), product_service.name %>
+    <%= link_to product_service.name, business_path(product_service.business) %>
+    <% product_service.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
   <% end %>
 <% end %>
 Categories
 <% if @categories %>
   <% @categories.each do |category| %>
-    <%= category.name %>
+    <%= link_to category.name, category_path(category) %>
+    <%= cl_image_tag category.photo.key, height: 300, width: 400, crop: :fill %>
   <% end %>
 <% end %>
