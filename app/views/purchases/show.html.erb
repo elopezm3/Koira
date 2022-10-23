@@ -1,0 +1,43 @@
+Congrats, you made a reservation at <%= @business.name %>
+Reservation info:
+For: <%= @purchase.user_name %>
+Phone: <%= @purchase.phone %>
+Date: <%= @purchase.date %> at <%= @purchase.time %>
+<% if @purchase.comments %>
+  Comments: <%= @purchase.comments %>
+<% end %>
+<% if @services %>
+  <% @services.each do |service| %>
+    <%= service.name %>
+    <%= service.description %>
+    Category: <%= service.category.name %>
+    Price: <%= service.price %>
+    <% service.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @food %>
+  <% @food.each do |food| %>
+    <%= food.name %>
+    <%= food.description %>
+    Category: <%= food.category.name %>
+    Price: <%= food.price %>
+    <% food.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% if @drinks %>
+  <% @drinks.each do |drink| %>
+    <%= drink.name %>
+    <%= drink.description %>
+    Category: <%= drink.category.name %>
+    Price: <%= drink.price %>
+    <% drink.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
+<% end %>

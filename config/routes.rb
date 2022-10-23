@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show] do
-    resources :businesses, only: [:new, :create]
+    resources :user_interests, only: [:new, :create]
   end
+  resources :businesses, only: [:new, :create]
   root to: "pages#home"
   get "/pages/supplier", to: "pages#supplier", as: "supplier"
-  resources :businesses, only: [:index, :update, :show, :destroy]
-  get "/users/:user_id/user_interests/new", to: "user_interests#new", as: "new_user_interest"
-  post "/users/:user_id/user_interests", to: "user_interests#create", as: "create_user_interest"
-  resources :purchases, only: [:show]
-  get "/users/:user_id/purchases/new", to: "user_interests#new", as: "new_user_purchase"
-  post "/users/:user_id/purchases", to: "user_interests#create", as: "create_user_purchase"
-  get "/my_business/:business_id", to: "business#show_for_owner", as: "my_business"
+  resources :businesses, only: [:index, :update, :show, :destroy] do
+    resources :product_or_services, only: [:new, :create]
+  end
+  resources :purchases, only: [:show, :create]
+  get "/my_business/:business_id", to: "businesses#show_for_owner", as: "my_business"
   resources :categories  # New, create edit update destroy only for admins
-
-
+  post "/add", to: "purchases#add", as: "add"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

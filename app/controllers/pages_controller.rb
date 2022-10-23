@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def home
-    @bars = Business.where(type: "bar")
-    @restaurants = Business.where(type: "restaurant")
+    @bars = Business.where(type_of_business: "bar")
+    @restaurants = Business.where(type_of_business: "restaurant")
     @businesses_most_visited = Business.all.sort_by { :number_of_purchases }.reverse
     if @businesses_most_visited.size < 10
       @businesses_most_visited = @businesses_most_visited.take(@businesses_most_visited.size)

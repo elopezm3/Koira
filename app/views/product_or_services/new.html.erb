@@ -1,0 +1,14 @@
+<div class="container m-3">
+  <%= simple_form_for [@business, @product_or_service] do |f| %>
+    <%= f.input :name, required: true %>
+    <%= f.input :description, required: true %>
+    <%= f.input :price, required: true %>
+    <%= f.label :type_product_service, "Product or service:"   %>
+    <%= f.collection_radio_buttons :type_product_service, [["product", 'Product'], ["service", 'Service']], :first, :last %>
+    <%= f.label :type_of_product, "In case of a product, select if it's a food or a drink"   %>
+    <%= f.collection_radio_buttons :type_of_product, [["food", 'Food'], ["drink", 'Drink']], :first, :last %>
+    <%= f.association :category %>
+    <%= f.input :photos, as: :file, required: true, input_html: { multiple: true } %>
+    <%= f.button :submit, required: true, class:"btn btn-primary" %>
+  <% end %>
+</div>
