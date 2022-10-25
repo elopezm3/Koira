@@ -1,56 +1,216 @@
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  <!-- Demo styles -->
+  <style>
+    body {
+      background: #eee;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .showBusinesses {
+      width: 100%;
+      height: 50%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    @media (max-width: 760px) {
+      .swiper-button-next {
+        right: 20px;
+      }
+
+      .swiper-button-prev {
+        left: 20px;
+      }
+    }
+  </style>
+</head>
 <% if @business.owner == current_user %>
   <%= link_to "Add a product or service", new_business_product_or_service_path(@business) %>
 <% end %>
+<h1 style="text-align:center"><%= @business.name %></h1>
+<div class="showBusinesses swiper">
+  <div class="swiper-wrapper">
+    <% @business.photos.each do |photo| %>
+      <div id="" class="swiper-slide">
+        <%= cl_image_tag photo.key, class:"business-image", height: 300, width: 400, crop: :fill %>
+      </div>
+    <% end %>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</div>
+<%= @business.description %>
 
 <%= form_with url: add_path, method: :post do |f| %>
-  <% @services.each do |service| %>
-    <%= service.name %>
-    <%= service.description %>
-    Category: <%= service.category.name %>
-    Price: <%= service.price %>
-    <% service.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <%= f.check_box service.id %>
-    <%= f.label service.id, "Add" %>
-  <% end %>
+  <div class="services">
+    <div class="services_experience">
+      <% @services.each do |service| %>
+        <h2><%= service.name %></h2>
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <% service.photos.each_with_index do |photo, i| %>
+              <% if (i == 0) %>
+                <div class="carousel-item active">
+                  <%= cl_image_tag photo.key %>
+                </div>
+              <% else %>
+                <div class="carousel-item">
+                  <%= cl_image_tag photo.key %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <%= service.description %>
+        Category: <%= service.category.name %>
+        Price: <%= service.price %>
+      <%= f.check_box service.id %>
+      <%= f.label service.id, "Add" %>
+      <% end %>
+    </div>
 
-  <% @food.each do |food| %>
-    <%= food.name %>
-    <%= food.description %>
-    Category: <%= food.category.name %>
-    Price: <%= food.price %>
-    <% food.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <%= f.check_box food.id %>
-    <%= f.label food.id, "Add" %>
-  <% end %>
+    <div class="services_menu">
 
-  <% @drinks.each do |drink| %>
-    <%= drink.name %>
-    <%= drink.description %>
-    Category: <%= drink.category.name %>
-    Price: <%= drink.price %>
-    <% drink.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-    <%= f.check_box drink.id %>
-    <%= f.label drink.id, "Add" %>
-  <% end %>
-  <h2>Form reservation:</h2>
-  <%= f.check_box :user_name_check %>
-  <%= f.label :user_name_check, "If the reservation is for someone different than you, please check this" %>
-  <%= f.text_field :user_name %>
-  <%= f.label :user_name, "If the reservation is for someone different than you, please fill here the name" %>
-  <%= f.date_field :date %>
-  <%= f.time_field :time %>
-  <%= f.label :date, "When do you need the reservation?" %>
-  <%= f.text_field :comments %>
-  <%= f.label :comments, "If there is something we need to take into account or any other aditional comments, please let us know" %>
-  <%= f.telephone_field :phone %>
-  <%= f.label :phone, "Please enter your phone" %>
-  <%= f.number_field :number_of_people, in: 1..50, step: 1 %>
-  <%= f.label :number_of_people, "Let us know for how many people is the reservation" %>
-  <%= f.submit "Book in this restaurant" %>
+      <div class="menu-drink">
+        <% @drinks.each do |drink| %>
+          <div class="accordion" id="accordionExample">
+
+            <div class="accordion-item">
+
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <%= drink.name %>
+                </button>
+              </h2>
+
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <%= drink.description %>
+                  <div class="accordion-body-img">
+                    <% drink.photos.each do |photo| %>
+                      <%= cl_image_tag photo.key %>
+                    <% end %>
+                  </div>
+                  $<%=(drink.price) %>
+                  <%= f.check_box drink.id %>
+                  <%= f.label drink.id, "Add" %>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        <% end %>
+      </div>
+
+      <div class="menu-food">
+        <% @food.each do |food| %>
+          <div class="accordion" id="accordionExample">
+
+            <div class="accordion-item">
+
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <%= food.name %>
+                </button>
+              </h2>
+
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <%= food.description %>
+                  <div class="accordion-body-img">
+                    <% food.photos.each do |photo| %>
+                      <%= cl_image_tag photo.key %>
+                    <% end %>
+                  </div>
+                  $<%=(food.price) %>
+                  <%= f.check_box food.id %>
+                  <%= f.label food.id, "Add" %>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="business-reservation">
+    <h2>Form reservation:</h2>
+    <%= f.check_box :user_name_check %>
+    <%= f.label :user_name_check, "If the reservation is for someone different than you, please check this" %>
+    <%= f.text_field :user_name %>
+    <%= f.label :user_name, "If the reservation is for someone different than you, please fill here the name" %>
+    <%= f.date_field :date %>
+    <%= f.time_field :time %>
+    <%= f.label :date, "When do you need the reservation?" %>
+    <%= f.text_field :comments %>
+    <%= f.label :comments, "If there is something we need to take into account or any other aditional comments, please let us know" %>
+    <%= f.telephone_field :phone %>
+    <%= f.label :phone, "Please enter your phone" %>
+    <%= f.number_field :number_of_people, in: 1..50, step: 1 %>
+    <%= f.label :number_of_people, "Let us know for how many people is the reservation" %>
+    <%= f.submit "Book in this restaurant" %>
+  </div>
 <% end %>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+  var showBusinesses = new Swiper('.swiper', {
+    slidesPerView: 1,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      resize: function () {
+        swiper.changeDirection(getDirection());
+      },
+    },
+  });
+
+  function getDirection() {
+    var windowWidth = window.innerWidth;
+    var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+    return direction;
+  }
+</script>

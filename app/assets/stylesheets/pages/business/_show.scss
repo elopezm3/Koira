@@ -1,0 +1,44 @@
+.business_info {
+  background-color: red;
+}
+
+.services {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 40px;
+  flex-wrap: wrap;
+}
+
+.services_experience {
+  padding: 40px;
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 40px;
+  width: 30vw;
+}
+
+.services_menu {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  width: 50vw;
+}
+
+.menu-item {
+  display: flex;
+}
+
+.accordion-body-img {
+
+}
+
+.accordion-body-img img {
+  width: 40px;
+  height: 40px;
+}
+
+.menu-food {
+  width: 30%;
+}
