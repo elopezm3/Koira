@@ -1,11 +1,24 @@
-<div class="container m-3">
-  <%= simple_form_for @business do |f| %>
-    <%= f.input :name, required: true %>
-    <%= f.input :address, required: true %>
-    <%= f.input :description, required: true %>
-    <%= f.label :type_of_business, "type_of_business:"   %>
-    <%= f.collection_radio_buttons :type_of_business, [["bar", 'Bar'], ["restaurant", 'Restaurante']], :first, :last%>
-    <%= f.input :photos, as: :file, required: true, input_html: { multiple: true } %>
-    <%= f.button :submit, required: true, class:"btn btn-primary" %>
-  <% end %>
-</div>
+<form>
+  <div class="card mb-3" style="max-width: 700px; margin: auto; padding: 16px;">
+    <%= image_tag "negocio.jpg", class:"card-img" %>
+      <div class="container" style="max-width: 800px; margin: auto; padding: 16px;">
+          <div class="row no-gutters" style="border-radius: 20px">
+          <strong><h3>Crea tu negocio</h3></strong>
+          <p>Utiliza un nombre creativo e innovador, realiza un plan de trabajo estructurado y metódico, planea tus metas e identifica tu público potencial, experimenta con sensaciones y sabores para resaltar entre los demás negocios de tu zona, identifica las necesidades del entorno y conviertelas en tu carta de presentación.</p>
+          <p>¿Sabes cómo potenciar tu negocio digitalmente? Un equipo especializado te acompaña</p><a href="#" class="card-link">Local business Koira</a>
+          <div class="container m-3">
+            <%= simple_form_for @business do |f| %>
+              <%= f.input :name, required: true %>
+              <%= f.input :address, required: true %>
+              <%= f.input :description, required: true %>
+              <%= f.label :type_of_business, "type_of_business:"   %>
+              <%= f.collection_radio_buttons :type_of_business, [["bar", 'Bar'], ["restaurant", 'Restaurante']], :first, :last%>
+              <%= f.input :photos, as: :file, required: true, input_html: { multiple: true } %>
+              <%= f.button :submit, required: true, class:"btn btn-primary" %>
+            <% end %>
+          </div>
+          </div>
+          </div>
+      </div>
+  </div>
+</form>

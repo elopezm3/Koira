@@ -13,7 +13,7 @@
   <div class="card" style="margin: 30px; text-align: center">
       <div class="container">
           <h1>Dar a conocer tu negocio mientras aumentas tus ingresos</h1>
-          <p>Brindar experiencias unicas en 2500 ciudades y 192 paises.</p>
+          <p>Brindar experiencias unicas en <strong>2500 ciudades</strong> y <strong>192 paises</strong>.</p>
       </div>
       <div class="d-grid gap-2 mx-auto" style="margin: 30px; text-align: center">
           <% if !current_user %>
@@ -22,43 +22,48 @@
           <%end%>
       </div>
   </div>
-  <%= link_to "Add my business", new_business_path %>
-  <div class="card" style="width: 20rem; margin: 30px; text-align: center">
-      <div class="card" style="width: 20rem">
-        <h2>Los negocios de tu zona:</h2>
-          <div class="card">
-          <p>Ganan en promedio $150.000 pesos por persona</p>
-          <a href="">Learn More About Us</a>
-          </div>
-          <div class="card">
-          <p>Tienen 17 reservas mas por día</p>
-          <a href="">Learn More About Us</a>
-          </div>
-      </div>
-  </div>
   <div>
-  </div>
-   <div class="learn-more">
-	  <div class="container">
-		  <div class="row">
-		      <div class="col-md-4">
-    			<h3>Travel</h3>
-    			<p>From apartments and rooms to treehouses and boats: stay in unique spaces in 192 countries.</p>
-    			<p><a href="https://www.airbnb.com/help/getting-started/how-to-travel">See how to travel on Airbnb</a></p>
-    	      </div>
-
-    		  <div class="col-md-4">
-    			<h3>Host</h3>
-    			<p>Renting out your unused space could pay your bills or fund your next vacation.</p>
-    			<p><a href="https://www.airbnb.com/help/getting-started/how-to-host">Learn more about hosting</a></p>
-    		  </div>
-
-    		  <div class="col-md-4">
-    			<h3>Trust and Safety</h3>
-    			<p>From Verified ID to our worldwide customer support team, we've got your back.</p>
-    			<p><a href="https://www.airbnb.com/trust">Learn about trust at Airbnb</a></p>
-    		  </div>
-	    </div>
-	  </div>
-  </body>
+      <div class="container" style="max-width: 800px; margin: auto; padding: 16px;">
+          <div class="row no-gutters">
+              <div class="col-md-4" style="width: 1600px; margin: 100; padding: 16px; border-radius: 20px;">
+                  <%= image_tag "people.jpg", class:"card-img"%>
+              <div class="card">
+                <div class="card-body">
+                  <p>Brinda servicios y experiencias unicas de forma personaliza según tu oferta y disponibilidad, dando a conocer
+                  tu negocio, creaciones propias, servicios gastronomicos o musicales para parejas o grupos, todo desde la misma aplicación</p>
+                <button type="button" class="btn btn-outline-success btn-lg" style="border-radius: 20px; text-align: center">
+                <%= link_to "Add my business", new_business_path %></button>
+                </div>
+              </div>
+              </div>
+              </div>
+          </div>
+          <div class="card-body" style="max-width: 800px; margin: auto; padding: 16px; text-align: center">
+          <blockquote class="blockquote mb-0">
+            <p>"Nuestras experiencias son una parte mayor de nosotros mismos..."</p>
+            <footer class="blockquote-footer"><cite title="Source Title">Gilovich</cite></footer>
+          </blockquote>
+        </div>
+      </div><br>
+      <div class="row" style="border-radius: 20px; text-align: center">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body" style="border-radius: 20px; text-align: center">
+              <h5 class="card-title">Ingresos</h5>
+              <p class="card-text">Ganan en promedio $150.000 pesos por persona</p>
+              <a href="#" class="btn btn-primary btn btn-warning" style="Two values - border-radius: 15px 50px">Conocer más</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body" style="border-radius: 20px; text-align: center">
+              <h5 class="card-title">Reservas<br></h5>
+              <p class="card-text">Tienen 17 reservas mas por día</p>
+              <a href="#" class="btn btn-primary btn btn-warning">Conocer más</a>
+            </div>
+          </div>
+        </div>
+</div><br>
+</body>
 </html>
