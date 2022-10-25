@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +9,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
     <!-- Demo styles -->
     <style>
-      html,
-      body {
-        position: relative;
-        height: 100%;
-      }
-
       body {
         background: #eee;
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-size: 14px;
         color: #000;
         margin: 0;
         padding: 0;
@@ -62,132 +53,11 @@
     </style>
   </head>
   <%= render "shared/slider" %>
-    <div class="businesses">
-      <div class="businesses_slide-bares">
-        <h2>Bares</h2>
-        <div id="businesses_container-card">
-          <div class="swiper">
-            <div id="businesses_card-bares"class="swiper-wrapper">
-              <div id="slide_card" class="swiper-slide">
-                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-                <div id="business_info">
-                  <h2>Bar Name</h2>
-                  <button>Conocer Más</button>
-                </div>
-              </div>
-              <div id="slide_card" class="swiper-slide">
-                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-                <div id="business_info">
-                  <h2>Bar Name</h2>
-                  <button>Conocer Más</button>
-                </div>
-              </div>
-              <div id="slide_card" class="swiper-slide"><img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-                <div id="business_info">
-                  <h2>Bar Name</h2>
-                  <button>Conocer Más</button>
-                </div>
-              </div>
-              <div id="slide_card" class="swiper-slide">
-                <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-                <div id="business_info">
-                  <h2>Bar Name</h2>
-                  <button>Conocer Más</button>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-        </div>
-      </div>
-      <div class="businesses_slide-restaurantes">
-          <h2>Restaurantes</h2>
-          <div id="businesses_container-card">
-            <div class="swiper">
-              <div id="businesses_slide-restaurantes"class="swiper-wrapper">
-                <div id="slide_card" class="swiper-slide">
-                  <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-                  <div id="business_info">
-                    <h2>Name</h2>
-                    <button>Conocer Más</button>
-                  </div>
-                </div>
-                <div id="slide_card" class="swiper-slide">
-                  <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-                  <div id="business_info">
-                    <h2>Bar Name</h2>
-                    <button>Conocer Más</button>
-                  </div>
-                </div>
-                <div id="slide_card" class="swiper-slide">
-                  <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-                  <div id="business_info">
-                    <h2>Bar Name</h2>
-                    <button>Conocer Más</button>
-                  </div>
-                </div>
-                <div id="slide_card" class="swiper-slide">
-                  <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-                  <div id="business_info">
-                    <h2>Bar Name</h2>
-                    <button>Conocer Más</button>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
-            </div>
-        </div>
-      </div>
-    </div>
-    <% if @bars %>
-      <% @bars.each do |bar| %>
-        <%= link_to bar.name, business_path(bar) %>
-        <% bar.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% if @restaurants %>
-      <% @restaurants.each do |restaurant| %>
-        <%= link_to restaurant.name, business_path(restaurant) %>
-        <% restaurant.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% if @businesses_most_visited %>
-      <% @businesses_most_visited.each do |business| %>
-        <%= link_to business.name, business_path(business) %>
-        <% business.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-    <!-- Initialize Swiper -->
-    <script>
-      var swiper = new Swiper('.swiper', {
-        slidesPerView: 2,
-        direction: getDirection(),
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        on: {
-          resize: function () {
-            swiper.changeDirection(getDirection());
-          },
-        },
-      });
+  <%= render "shared/business" %>
+  <%= render "shared/most_visited" %>
 
-      function getDirection() {
-        var windowWidth = window.innerWidth;
-        var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
 
-        return direction;
-      }
-    </script>
+
+<%# <% if @bars %>
+
 </html>

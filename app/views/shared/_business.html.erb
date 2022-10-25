@@ -1,0 +1,91 @@
+<div class="businesses">
+  <div class="businesses_slide-bares">
+    <h2>Bares</h2>
+    <div id="businesses_container-card">
+      <div class="barSwiper swiper">
+        <div id="businesses_slide"class="swiper-wrapper">
+          <% @bars.each do |bar| %>
+            <div id="slide_card" class="swiper-slides">
+              <% bar.photos.each_with_index do |photo, i| %>
+                <% if (i == 0) %>
+                  <%= cl_image_tag photo.key, class:"business-image", height: 300, width: 400, crop: :fill %>
+                <% end %>
+              <% end %>
+              <div id="business_info">
+                <h2><%=bar.name%></h2>
+                <button type="button" class="btn btn-primary"><%= link_to "Conocer Más", business_path(bar) %></button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+  <div class="businesses_slide">
+    <h2>Bares</h2>
+    <div id="businesses_container-card">
+      <div class="barSwiper swiper">
+        <div id="businesses_slide"class="swiper-wrapper">
+          <% @restaurants.each do |restaurant| %>
+            <div id="slide_card" class="swiper-slides">
+              <% restaurant.photos.each_with_index do |photo, i| %>
+                <% if (i == 0) %>
+                  <%= cl_image_tag photo.key, class:"business-image", height: 300, width: 400, crop: :fill %>
+                <% end %>
+              <% end %>
+              <div id="business_info">
+                <h2><%=restaurant.name%></h2>
+                <button type="button" class="btn btn-primary"><%= link_to "Conocer Más", business_path(restaurant) %></button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+  var barSwiper = new Swiper('.swiper', {
+    slidesPerView: 2,
+    direction: getDirection(),
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      resize: function () {
+        swiper.changeDirection(getDirection());
+      },
+    },
+  });
+
+    var restaurantSwiper = new Swiper('.swiper', {
+    slidesPerView: 2,
+    direction: getDirection(),
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      resize: function () {
+        swiper.changeDirection(getDirection());
+      },
+    },
+  });
+
+  function getDirection() {
+    var windowWidth = window.innerWidth;
+    var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+    return direction;
+  }
+</script>

@@ -1,0 +1,46 @@
+<div class="mostVisited">
+  <div class="businesses_slide-bares">
+    <h2>Más Reservados</h2>
+    <div id="businesses_container-card">
+      <div class="mostVisited swiper">
+        <div id="businesses_slide-bares"class="swiper-wrapper">
+          <% @businesses_most_visited.each do |visited| %>
+            <div id="slide_card" class="swiper-slides">
+              <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
+              <div id="business_info">
+                <h2><%=visited.name%></h2>
+                <button type="button" class="btn btn-primary"><%= link_to "Conocer Más", business_path(visited) %></button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  var mostVisited = new Swiper('.swiper', {
+    slidesPerView: 1,
+    direction: getDirection(),
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      resize: function () {
+        swiper.changeDirection(getDirection());
+      },
+    },
+  });
+
+  function getDirection() {
+    var windowWidth = window.innerWidth;
+    var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+    return direction;
+  }
+</script>
