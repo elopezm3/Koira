@@ -11,7 +11,7 @@
               <%= f.input :name, required: true %>
               <%= f.input :address, required: true %>
               <%= f.input :description, required: true %>
-              <%= f.label :type_of_business, "type_of_business:"   %>
+              <%= f.label :type_of_business, "Tipo de negocio:"   %>
               <%= f.collection_radio_buttons :type_of_business, [["bar", 'Bar'], ["restaurant", 'Restaurante']], :first, :last%>
               <%= f.input :photos, as: :file, required: true, input_html: { multiple: true } %>
               <%= f.button :submit, required: true, class:"btn btn-primary" %>
