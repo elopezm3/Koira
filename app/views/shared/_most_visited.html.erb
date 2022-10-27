@@ -1,46 +1,36 @@
-<div class="mostVisited">
-  <div class="businesses_slide-bares">
-    <h2>Más Reservados</h2>
-    <div id="businesses_container-card">
-      <div class="mostVisited swiper">
-        <div id="businesses_slide-bares"class="swiper-wrapper">
+<div class="container text-center my-3">
+  <h2 class="font-weight-light">Más Visitados</h2>
+  <div class="row mx-auto my-auto justify-content-center border border-dark" style="border-radius: 20px;" >
+    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active rounded">
           <% @businesses_most_visited.each do |visited| %>
-            <div id="slide_card" class="swiper-slides">
-              <img id="business-image" src="https://www.linkpicture.com/q/nikola-jovanovic-QGPmWrclELg-unsplash.jpg" alt="">
-              <div id="business_info">
-                <h2><%=visited.name%></h2>
-                <button type="button" class="btn btn-primary"><%= link_to "Conocer Más", business_path(visited) %></button>
+            <div class="col-md-3">
+              <div class="card m-2">
+                <div class="card-img">
+                  <% visited.photos.each_with_index do |photo, i| %>
+                    <% if (i == 0) %>
+                      <%= cl_image_tag photo.key, class: "img-fluid", style: "border-radius: 20px;", height: 300, width: 400, crop: :fill %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div>
+                  <strong>
+                    <%= visited.name %>
+                  </strong>
+                </div>
+                <button type="button" class="btn btn-primary m-2"><%= link_to "Conocer Más", business_path(visited) %></button>
               </div>
             </div>
           <% end %>
         </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
       </div>
+      <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </a>
+      <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </a>
     </div>
   </div>
 </div>
-
-<script>
-
-  var mostVisited = new Swiper('.swiper', {
-    slidesPerView: 1,
-    direction: getDirection(),
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    on: {
-      resize: function () {
-        swiper.changeDirection(getDirection());
-      },
-    },
-  });
-
-  function getDirection() {
-    var windowWidth = window.innerWidth;
-    var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-    return direction;
-  }
-</script>
