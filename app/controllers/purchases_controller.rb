@@ -18,6 +18,7 @@ class PurchasesController < ApplicationController
       if (params[id].to_i.positive? && id.to_i.positive?)
         item = PurchaseItem.new
         item.purchase = purchase
+        item.quantity = params[id]
         item.product_or_service = ProductOrService.find(id)
         item.save
       end
@@ -26,17 +27,23 @@ class PurchasesController < ApplicationController
   end
   def show
     @items = @purchase.purchase_items
+    @total_price = 0
+    @items.each do |item|
+      individual_price = item.product_or_service.price
+      quantity = item.quantity
+      @total_price += individual_price * quantity
+    end
     @business = @items.first.product_or_service.business
     @services = []
     @food = []
     @drinks = []
     @items.each do |item|
       if item.product_or_service.type_product_service == "service"
-        @services.push(item.product_or_service)
+        @services.push(item)
       elsif item.product_or_service.type_of_product == "food"
-        @food.push(item.product_or_service)
+        @food.push(item)
       else
-        @drinks.push(item.product_or_service)
+        @drinks.push(item)
       end
     end
   end

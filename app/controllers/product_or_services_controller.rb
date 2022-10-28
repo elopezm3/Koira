@@ -14,7 +14,6 @@ class ProductOrServicesController < ApplicationController
       @product_or_service.type_of_product = 'food'
     end
     @product_or_service.business = @business
-    p @product_or_service
     if @product_or_service.save
       redirect_to business_path(@business)
     else

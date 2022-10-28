@@ -153,16 +153,19 @@ reviews_hash = {1 => "Awful", 2 => "It was very bad", 3 => "Not so bad", 4 => "N
   purchase_item.purchase = purchase
   food = ProductOrService.where(type_of_product: "food")
   purchase_item.product_or_service = food.sample
+  purchase_item.quantity = rand(1..5)
   purchase_item.save
   purchase_item = PurchaseItem.new
   purchase_item.purchase = purchase
   drink = ProductOrService.where(type_of_product: "drink")
   purchase_item.product_or_service = drink.sample
+  purchase_item.quantity = rand(1..5)
   purchase_item.save
   purchase_item = PurchaseItem.new
   purchase_item.purchase = purchase
   service = ProductOrService.where(type_product_service: "service")
   purchase_item.product_or_service = service.sample
+  purchase_item.quantity = rand(1..5)
   purchase_item.save
   5.times do
     review = Review.new
