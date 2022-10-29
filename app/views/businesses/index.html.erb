@@ -1,25 +1,58 @@
-Businesses
-<% if @businesses %>
-  <% @businesses.each do |business| %>
-    <%= link_to business.name, business_path(business) %>
-    <% business.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-  <% end %>
-<% end %>
-Products or Services
-<% if @product_or_services %>
-  <% @product_or_services.each do |product_service| %>
-    <%= link_to product_service.name, business_path(product_service.business) %>
-    <% product_service.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-  <% end %>
-<% end %>
-Categories
-<% if @categories %>
-  <% @categories.each do |category| %>
-    <%= link_to category.name, category_path(category) %>
-    <%= cl_image_tag category.photo.key, height: 300, width: 400, crop: :fill %>
-  <% end %>
-<% end %>
+<div class="business_index container">
+  <h1 class="pt-4">Los resutaldos de tu busqueda</h1>
+  <div class="p-4">
+    <h2>Businesses</h2>
+    <div class="business_index-card container bg-white p-4">
+      <% if @businesses %>
+        <% @businesses.each do |business| %>
+          <div class="col-3">
+            <h3>Nombre</h3>
+            <%= link_to business.name, business_path(business) %>
+          </div>
+          <div class="col-9">
+            <h3>Fotos</h3>
+            <% business.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="p-4">
+    <h2>Products or Services</h2>
+    <div class="business_index-card container bg-white p-4">
+      <% if @product_or_services %>
+        <% @product_or_services.each do |product_service| %>
+          <div class="col-3">
+            <h3>Nombre</h3>
+            <%= link_to product_service.name, business_path(product_service.business) %>
+          </div>
+          <div class="col-9">
+            <h3>Fotos</h3>
+            <% product_service.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="p-4">
+    <h2>Categories</h2>
+    <div class="business_index-card container bg-white p-4">
+      <% if @categories %>
+        <% @categories.each do |category| %>
+          <div class="col-3">
+            <h3>Nombre</h3>
+            <%= link_to category.name, category_path(category) %>
+          </div>
+          <div class="col-9">
+            <h3>Fotos</h3>
+            <%= cl_image_tag category.photo.key, height: 100, width: 100, crop: :fill %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
