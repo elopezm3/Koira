@@ -145,6 +145,12 @@
                     $<%=(drink.price) %>
                   <%= f.label drink.id, "Quantity:" %>
                   <%= f.number_field drink.id, min: 0 %>
+                  <ul>
+                    <% if @user == current_user %>
+                      <%= button_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe, business_product_or_services_path(@product_or_services), method: :get %>
+                      <%= button_to "<i class='fa-solid fa-trash'></i>".html_safe, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                    <% end %>
+                  </ul>
                   </div>
                   </div>
                 </div>
