@@ -1,0 +1,27 @@
+.img-reserva{
+  max-width: 50%;
+  height: auto;
+}
+
+.reservation_index-card{
+  display: flex;
+  background-color: white;
+  padding: 20px;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.reservation-info{
+  display: flex;
+  flex-direction: column;
+}
+
+.img-service{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.img-service-photo{
+  margin: 0 20px;
+}
