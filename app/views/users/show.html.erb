@@ -3,7 +3,8 @@
 
 <% unless @businesses.nil? %>
   <% @businesses.each do |business| %>
-   <div><%= link_to business.name, my_business_path(business) %></div>
+   <div><%= business.name%></div>
+   <div><%= link_to "Reservations", my_business_path(business) %></div>
    <div><%= business.address %></div>
     <div><%= business.description %></div>
     <% business.photos.each do |photo| %>
@@ -13,3 +14,17 @@
       <% end %>
   <% end %>
 <% end %>
+
+<h2>My purchases</h2>
+
+<% unless @purchases.nil? %>
+  <% @purchases.each do |purchase| %>
+    <div><%= purchase.date%></div>
+    <div><%= purchase.time.strftime("%I:%M%p") %></div>
+    <div><%= purchase.total_price%></div>
+  <% end %>
+<% end %>
+
+nombre donde hice la compra
+fehca hora y precio total
+show de la compra linkear al show de purchases

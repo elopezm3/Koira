@@ -15,4 +15,15 @@ class Purchase < ApplicationRecord
       errors.add(:date, "can't be in the past, be serious")
     end
   end
+
+  def total_price
+    items = self.purchase_items
+    total_price = 0
+    items.each do |item|
+      individual_price = item.product_or_service.price
+      quantity = item.quantity
+      total_price += individual_price * quantity
+    end
+    return total_price
+  end
 end
