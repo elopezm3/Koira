@@ -8,7 +8,7 @@
 
 admin = User.new
 admin.first_name = "Admin"
-admin.last_name = ""
+admin.last_name = "-"
 admin.role = "customer"
 admin.email = "estebanlopez_99@hotmail.com"
 admin.password = 'koira123'
