@@ -2,9 +2,9 @@
   <h1 class="pt-4">Los resutaldos de tu busqueda</h1>
   <div class="p-4">
     <h2>Businesses</h2>
-    <div class="business_index-card container bg-white p-4">
-      <% if @businesses %>
-        <% @businesses.each do |business| %>
+    <% if @businesses %>
+      <% @businesses.each do |business| %>
+        <div class="business_index-card container bg-white p-4">
           <div class="col-3">
             <h3>Nombre</h3>
             <%= link_to business.name, business_path(business) %>
@@ -15,15 +15,15 @@
               <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
             <% end %>
           </div>
-        <% end %>
+        </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
   <div class="p-4">
     <h2>Products or Services</h2>
-    <div class="business_index-card container bg-white p-4">
-      <% if @product_or_services %>
-        <% @product_or_services.each do |product_service| %>
+    <% if @product_or_services %>
+      <% @product_or_services.each do |product_service| %>
+        <div class="business_index-card container bg-white p-4">
           <div class="col-3">
             <h3>Nombre</h3>
             <%= link_to product_service.name, business_path(product_service.business) %>
@@ -34,15 +34,15 @@
               <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill %>
             <% end %>
           </div>
-        <% end %>
+        </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
   <div class="p-4">
     <h2>Categories</h2>
-    <div class="business_index-card container bg-white p-4">
-      <% if @categories %>
-        <% @categories.each do |category| %>
+    <% if @categories %>
+      <% @categories.each do |category| %>
+        <div class="business_index-card container bg-white p-4">
           <div class="col-3">
             <h3>Nombre</h3>
             <%= link_to category.name, category_path(category) %>
@@ -51,8 +51,8 @@
             <h3>Fotos</h3>
             <%= cl_image_tag category.photo.key, height: 100, width: 100, crop: :fill %>
           </div>
-        <% end %>
+        </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
