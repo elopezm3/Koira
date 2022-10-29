@@ -11,14 +11,14 @@
   <body>
 
   <div class="card" style="margin: 30px; text-align: center">
-      <div class="container">
+      <div class="container" style="padding: 22px;">
           <h1>Dar a conocer tu negocio mientras aumentas tus ingresos</h1>
           <p>Brindar experiencias unicas en <strong>2500 ciudades</strong> y <strong>192 paises</strong>.</p>
       </div>
-      <div class="d-grid gap-2 mx-auto" style="margin: 30px; text-align: center">
+      <div class="d-grid gap-2 mx-auto" style="margin: 16px; text-align: center">
           <% if !current_user %>
-          <button type="button" class="btn btn-outline-primary"><%= link_to "Iniciar sesión", new_user_session_path %></button>
-          <button type="button" class="btn btn-outline-success"><%= link_to "Registrase", new_user_registration_path %></button></a>
+          <button type="button" class="btn btn-primary"><%= link_to "Iniciar sesión", new_user_session_path %></button>
+          <button type="button" class="btn btn-success"><%= link_to "Registrarse", new_user_registration_path %></button></a>
           <%end%>
       </div>
   </div>
@@ -26,12 +26,12 @@
       <div class="container" style="max-width: 800px; margin: auto; padding: 16px;">
           <div class="row no-gutters">
               <div class="col-md-4" style="width: 1600px; margin: 100; padding: 16px; border-radius: 20px;">
-                  <%= image_tag "people.jpg", class:"card-img"%>
+                  <%= image_tag "people.jpg", class:"card-img", style: "border-radius: 20px; text-align: center"%>
               <div class="card">
                 <div class="card-body">
                   <p>Brinda servicios y experiencias unicas de forma personaliza según tu oferta y disponibilidad, dando a conocer
                   tu negocio, creaciones propias, servicios gastronomicos o musicales para parejas o grupos, todo desde la misma aplicación</p>
-                <button type="button" class="btn btn-outline-success btn-lg" style="border-radius: 20px; text-align: center">
+                <button type="button" class="d-grid gap-2 mx-auto btn btn-success btn-lg" style="border-radius: 20px; text-align: center">
                 <%= link_to "Add my business", new_business_path %></button>
                 </div>
               </div>
