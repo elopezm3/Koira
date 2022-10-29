@@ -2,9 +2,6 @@ class Business < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_business,
                   against: [:name.downcase, :description.downcase, :type_of_business.downcase],
-                  associated_against: {
-                    product_or_services: [:name.downcase, :description.downcase]
-                  },
                   using: {
                     tsearch: { prefix: true }
                   }
