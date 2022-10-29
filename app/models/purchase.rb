@@ -26,4 +26,11 @@ class Purchase < ApplicationRecord
     end
     return total_price
   end
+
+  def business
+    items = self.purchase_items
+    product_or_service = items.first.product_or_service
+    business = product_or_service.business
+    return business
+  end
 end

@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_business, only: %i[show destroy edit show_for_owner]
+  before_action :set_business, only: %i[show destroy edit]
   def index
     if params[:query].present?
       query = params[:query].downcase
@@ -52,6 +52,7 @@ class BusinessesController < ApplicationController
   end
 
   def show_for_owner
+    @business = Business.find(params[:business_id])
     purchases = Purchase.all
     @business_purchases = []
     purchases.each do |purchase|
