@@ -54,6 +54,7 @@
 <div class="container_business">
   <% if @business.owner == current_user %>
     <%= link_to "Add a product or service", new_business_product_or_service_path(@business) %>
+    <%= link_to "See reservations", my_business_path(@business) %>
   <% end %>
   <h1 style="text-align:center"><%= @business.name %></h1>
   <div class="showBusinesses swiper">

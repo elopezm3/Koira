@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_business, only: %i[ show destroy edit ]
+  before_action :set_business, only: %i[show destroy edit show_for_owner]
   def index
     if params[:query].present?
       query = params[:query].downcase
@@ -48,6 +48,18 @@ class BusinessesController < ApplicationController
       redirect_to business_path(@business)
     else
       render :edit
+    end
+  end
+
+  def show_for_owner
+    purchases = Purchase.all
+    @business_purchases = []
+    purchases.each do |purchase|
+      purchase_items = purchase.purchase_items
+      product_or_service = purchase_items.first.product_or_service
+      if product_or_service.business == @business
+        @business_purchases.push(purchase)
+      end
     end
   end
 
