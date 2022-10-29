@@ -1,0 +1,18 @@
+My <%= @business.name %> reservations
+<% unless @business_purchases.nil? %>
+  <% @business_purchases.each do |purchase| %>
+    <% if purchase.date >= Date.today %>
+      Made by: <%= purchase.user_name %>
+      Phone: <%= purchase.phone %>
+      Date: <%= purchase.date %>
+      Time: <%= purchase.time.strftime("%I:%M%p") %>
+      Number of people: <%= purchase.number_of_people %>
+      Comments: <%= purchase.comments %>
+      Items:
+      <% purchase.purchase_items.each do |item| %>
+        Name: <%= item.product_or_service.name %>
+        Quantity: <%= item.quantity %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
