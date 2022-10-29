@@ -6,7 +6,7 @@
    <div><%= link_to business.name, my_business_path(business) %></div>
    <div><%= business.address %></div>
     <div><%= business.description %></div>
-    <% @business.photos.each do |photo| %>
+    <% business.photos.each do |photo| %>
         <div id="" class="swiper-slide">
           <%= cl_image_tag photo.key, class:"img-fluid", height: 600, width: 1920, crop: :fill %>
         </div>
