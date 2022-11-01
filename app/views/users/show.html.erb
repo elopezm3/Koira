@@ -4,9 +4,9 @@
 <% unless @businesses.nil? %>
   <% @businesses.each do |business| %>
    <div><%= business.name%></div>
-   <div><%= link_to "Reservations", my_business_path(business) %></div>
    <div><%= business.address %></div>
     <div><%= business.description %></div>
+    <div><%= link_to "See reservations", my_business_path(business) %></div>
     <% business.photos.each do |photo| %>
         <div id="" class="swiper-slide">
           <%= cl_image_tag photo.key, class:"img-fluid", height: 600, width: 1920, crop: :fill %>
@@ -19,12 +19,10 @@
 
 <% unless @purchases.nil? %>
   <% @purchases.each do |purchase| %>
+    <div>Business: <%= purchase.business.name %></div>
     <div><%= purchase.date%></div>
     <div><%= purchase.time.strftime("%I:%M%p") %></div>
     <div><%= purchase.total_price%></div>
+    <div><%= link_to "See more details", purchase_path(purchase) %></div>
   <% end %>
 <% end %>
-
-nombre donde hice la compra
-fehca hora y precio total
-show de la compra linkear al show de purchases
