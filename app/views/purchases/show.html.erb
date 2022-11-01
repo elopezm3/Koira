@@ -143,9 +143,9 @@
         </div>
         <%= drink.product_or_service.description %><br>
         Category: <%= drink.product_or_service.category.name %><br>
-        Price per single item: <%= drink.product_or_service.price %>
+        Price per single item: $<%= drink.product_or_service.price %>
         Quantity: <%= drink.quantity %>
-        Total price: $<%= drink.product_or_service.price * drink.quantity %>
+        Total price: $ <%= drink.product_or_service.price * drink.quantity %>
         <div class="img-service">
           <% drink.product_or_service.photos.each do |photo| %>
             <%= cl_image_tag photo.key, height: 100, width: 200, crop: :fill, class:"img-service-photo" %>
