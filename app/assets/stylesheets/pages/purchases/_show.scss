@@ -6,9 +6,9 @@
 .reservation_index-card{
   display: flex;
   background-color: white;
-  padding: 20px;
+  padding: auto;
   flex-direction: column;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .reservation-info{
@@ -24,4 +24,5 @@
 
 .img-service-photo{
   margin: 0 20px;
+  border-radius: 10px;
 }
