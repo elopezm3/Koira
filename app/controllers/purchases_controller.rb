@@ -23,7 +23,11 @@ class PurchasesController < ApplicationController
         item.save
       end
     end
-    redirect_to purchase_path(purchase)
+    if purchase.purchase_items.present?
+      redirect_to purchase_path(purchase)
+    else
+      purchase.destroy
+    end
   end
   def show
     @items = @purchase.purchase_items

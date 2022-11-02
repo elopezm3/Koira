@@ -6,7 +6,7 @@ class Business < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
-  has_many :product_or_services
+  has_many :product_or_services, dependent: :destroy
   has_many_attached :photos
   belongs_to :owner, class_name: "User"
   validates :name, presence: true

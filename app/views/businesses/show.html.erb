@@ -219,8 +219,8 @@
     <br>
     <div>
       <%= f.label :date, "When do you need the reservation?" %>
-      <%= f.date_field :date %>
-      <%= f.time_field :time %>
+      <%= f.date_field :date, required: true %>
+      <%= f.time_field :time, required: true %>
     </div>
     <br>
     <div>
@@ -232,13 +232,13 @@
 
     <div>
       <%= f.label :phone, "Please enter your phone" %>
-      <%= f.telephone_field :phone %>
+      <%= f.telephone_field :phone, required: true %>
     </div>
 
     <br>
     <div>
       <%= f.label :number_of_people, "Let us know for how many people is the reservation" %>
-      <%= f.number_field :number_of_people, in: 1..50, step: 1 %>
+      <%= f.number_field :number_of_people, in: 1..50, step: 1, required: true %>
     </div>
 
     <br>
