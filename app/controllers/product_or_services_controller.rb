@@ -1,7 +1,27 @@
 class ProductOrServicesController < ApplicationController
+  before_action :set_product_or_service, only: [:edit, :update, :destroy]
   def new
     @business = Business.find(params[:business_id])
     @product_or_service = ProductOrService.new
+  end
+
+  def edit
+  end
+
+  def update
+    if @product_or_service.update(product_or_service_params)
+      @business = @product_or_service.business
+      redirect_to business_path(@business)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @business = @product_or_service.business
+    @product_or_service.destroy
+    #redirect_to business_path(@business)
+    redirect_to business_path(@business), status: :see_other
   end
 
   def create
