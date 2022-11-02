@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :businesses, only: [:index, :update, :show, :destroy] do
     resources :product_or_services, only: [:new, :create]
   end
+  resources :product_or_services, only: [:edit, :update, :destroy]            
   resources :purchases, only: [:show, :create]
   get "/my_business/:business_id", to: "businesses#show_for_owner", as: "my_business"
   resources :categories  # New, create edit update destroy only for admins
