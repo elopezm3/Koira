@@ -114,6 +114,14 @@
                         <div class="d-flex flex-column mt-4">
                           <%= f.label service.id, "Quantity:" %>
                           <%= f.number_field service.id, min: 0 %>
+                          <% if service.business.owner == current_user %>
+                            <%= button_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,  edit_product_or_service_path(service), method: :get %>
+                            <!--<%= button_to "<i class='fa-solid fa-trash'></i>".html_safe,  product_or_service_path(service), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>  -->
+                            <!-- <%= button_to "<i class='fa-solid fa-trash'></i>".html_safe, product_or_service_path(service), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%> -->
+                            <%= link_to product_or_service_path(service), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                              <i class='fa-solid fa-trash'></i>
+                            <% end %>
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -145,6 +153,14 @@
                     $<%=(drink.price) %>
                   <%= f.label drink.id, "Quantity:" %>
                   <%= f.number_field drink.id, min: 0 %>
+                  <ul>
+                    <% if drink.business.owner == current_user %>
+                      <%= button_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,   edit_product_or_service_path(drink), method: :get %>
+                      <%= link_to product_or_service_path(drink), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                        <i class='fa-solid fa-trash'></i>
+                      <% end %>
+                    <% end %>
+                  </ul>
                   </div>
                   </div>
                 </div>
@@ -172,6 +188,12 @@
                     $<%=(food.price) %>
                   <%= f.label food.id, "Quantity:" %>
                   <%= f.number_field food.id, min: 0 %>
+                  <% if food.business.owner == current_user %>
+                    <%= button_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,  edit_product_or_service_path(food), method: :get %>
+                    <%= link_to product_or_service_path(food), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                      <i class='fa-solid fa-trash'></i>
+                    <% end %>
+                  <% end %>
                   </div>
                   </div>
                 </div>
@@ -197,8 +219,8 @@
     <br>
     <div>
       <%= f.label :date, "When do you need the reservation?" %>
-      <%= f.date_field :date %>
-      <%= f.time_field :time %>
+      <%= f.date_field :date, required: true %>
+      <%= f.time_field :time, required: true %>
     </div>
     <br>
     <div>
@@ -210,13 +232,13 @@
 
     <div>
       <%= f.label :phone, "Please enter your phone" %>
-      <%= f.telephone_field :phone %>
+      <%= f.telephone_field :phone, required: true %>
     </div>
 
     <br>
     <div>
       <%= f.label :number_of_people, "Let us know for how many people is the reservation" %>
-      <%= f.number_field :number_of_people, in: 1..50, step: 1 %>
+      <%= f.number_field :number_of_people, in: 1..50, step: 1, required: true %>
     </div>
 
     <br>

@@ -1,7 +1,7 @@
 class Purchase < ApplicationRecord
   belongs_to :buyer, class_name: "User"
-  has_many :purchase_items
-  has_many :reviews
+  has_many :purchase_items, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   validates :buyer, presence: true
   validates :date, presence: true
   validate :date_cannot_be_in_past

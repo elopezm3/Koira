@@ -6,7 +6,7 @@ class Category < ApplicationRecord
                     tsearch: { prefix: true }
                   }
 
-  has_many :product_or_services
+  has_many :product_or_services, dependent: :destroy
   has_one_attached :photo
   validates :name, presence: true
 end

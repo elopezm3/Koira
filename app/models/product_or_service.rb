@@ -7,7 +7,7 @@ class ProductOrService < ApplicationRecord
                   }
   belongs_to :category
   belongs_to :business
-  has_many :purchase_items
+  has_many :purchase_items, dependent: :destroy
   has_many_attached :photos
   validates :category, presence: true
   validates :price, presence: true
