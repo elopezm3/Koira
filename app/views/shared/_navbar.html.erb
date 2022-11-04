@@ -6,10 +6,18 @@
 
     <form action="/businesses", method="get" accept-charset="UTF-8" %>
       <div id="navbar__search" class="input-group">
+        <input class="form-control mr-sm-2" type="search" placeholder="Busca tu ocasión especial" aria-label="Busca tu ocasión especial">
+        <button class="search-nav border-white" type="submit" style="padding: 9px;"><i class="fa-solid fa-magnifying-glass"></i> </button>
+      </div>
+    </form>
+
+  <!--
+      <div id="navbar__search" class="input-group">
         <input id="query" name="query" type="text" class="form-control" placeholder="Busca tu ocasión especial." aria-label="Busca tu ocasión especial." aria-describedby="button-addon2">
         <button type="submit" class="fa-solid fa-magnifying-glass" style="padding: 16px;"></button>
       </div>
-    </form>
+  -->
+
 
     <div>
       <%= link_to "Unir mi negocio", supplier_path, class: "nav-link" %>

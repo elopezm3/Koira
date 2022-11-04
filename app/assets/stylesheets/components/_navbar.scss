@@ -22,3 +22,13 @@
   background: none;
   border: none;
 }
+
+.search-nav {
+  border-radius: 100px;
+  background-color: white;
+  border: none;
+  &:hover {
+    background-color: rgb(196, 193, 193);
+  }
+
+}
