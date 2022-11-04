@@ -1,18 +1,31 @@
-My <%= @business.name %> reservations
-<% unless @business_purchases.nil? %>
-  <% @business_purchases.each do |purchase| %>
-    <% if purchase.date >= Date.today %>
-      Made by: <%= purchase.user_name %>
-      Phone: <%= purchase.phone %>
-      Date: <%= purchase.date %>
-      Time: <%= purchase.time.strftime("%I:%M%p") %>
-      Number of people: <%= purchase.number_of_people %>
-      Comments: <%= purchase.comments %>
-      Items:
-      <% purchase.purchase_items.each do |item| %>
-        Name: <%= item.product_or_service.name %>
-        Quantity: <%= item.quantity %>
+<div class="view_reservation">
+  <div class="card text-center" style="padding: 30px; margin: 28px ">
+    <h2>My <strong><%= @business.name %></strong> reservations</h2>
+    <% unless @business_purchases.nil? %><br>
+      <% @business_purchases.each do |purchase| %><br>
+        <div class="reservation_index-card">
+          <% if purchase.date >= Date.today %><br>
+            <div class="card mb-8" style="padding: 32px; margin: 0 10px ">
+              <div class="reserva-view row g-2">
+              <%= image_tag "meetup.jpg", class: "img-reserva-view" %>
+                <div class="col-md-4">
+                Made by: <strong><%= purchase.user_name %></strong><br>
+                Phone: <strong><%= purchase.phone %></strong><br>
+                Date: <strong><%= purchase.date %></strong><br>
+                Time: <strong><%= purchase.time.strftime("%I:%M%p") %></strong><br>
+                Number of people: <strong><%= purchase.number_of_people %></strong><br>
+                Comments: <strong><%= purchase.comments %></strong><br>
+                Items:
+                <% purchase.purchase_items.each do |item| %><br>
+                  Name: <strong><%= item.product_or_service.name %></strong>
+                  Quantity: <strong><%= item.quantity %></strong>
+                <% end %>
+                <% end %>
+                </div>
+              </div>
+            </div>
+        </div>
       <% end %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+</div>
