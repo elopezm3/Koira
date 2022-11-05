@@ -214,25 +214,6 @@
       <br>
       <%=  f.submit "Book in this restaurant", class: "btn btn-primary", style:"color:white" %>
     </div>
-
-    <br>
-    <div>
-      <%= f.label :date, "When do you need the reservation?" %>
-      <%= f.date_field :date, required: true %>
-      <%= f.time_field :time, required: true %>
-    </div>
-    <br>
-    <div>
-      <%= f.label :comments, "If there is something we need to take into account or any other aditional comments, please let us know" %>
-      <%= f.text_field :comments %>
-    </div>
-
-    <br>
-
-      function changePos(numbers, pos){
-        numbers.css('bottom', '-' + pos*38 + 'px');
-      }
-    </script>
   <% end %>
 </div>
 <!-- Swiper JS -->
