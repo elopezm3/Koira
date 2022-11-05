@@ -92,7 +92,13 @@
                   <h4><strong>$<%=service.price %></strong></h4>
                   <div class="number">
                     <%= f.label service.id, "Quantity:" %>
-                    <%= f.number_field service.id, min: 0, value:0, class:"js-select input-number", name:"first" %>
+                    <%= f.number_field service.id, min: 0, value:0, class:"js-select input-number" %>
+                    <% if service.business.owner == current_user %>
+                      <%= link_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,  edit_product_or_service_path(service), method: :get %>
+                      <%= link_to product_or_service_path(service), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                        <i class='fa-solid fa-trash'></i>
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -127,7 +133,13 @@
                   <h4><strong>$<%=drink.price %></strong></h4>
                   <div class="number">
                     <%= f.label drink.id, "Quantity:" %>
-                    <%= f.number_field drink.id, min: 0, value:0, class:"js-select input-number", name:"first" %>
+                    <%= f.number_field drink.id, min: 0, value:0, class:"js-select input-number" %>
+                    <% if drink.business.owner == current_user %>
+                      <%= link_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,   edit_product_or_service_path(drink), method: :get %>
+                      <%= link_to product_or_service_path(drink), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                        <i class='fa-solid fa-trash'></i>
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -162,7 +174,13 @@
                   <h4><strong>$<%=food.price %></strong></h4>
                   <div class="number">
                     <%= f.label food.id, "Quantity:" %>
-                    <%= f.number_field food.id, min: 0, value:0, class:"js-select input-number", name:"first" %>
+                    <%= f.number_field food.id, min: 0, value:0, class:"js-select input-number" %>
+                    <% if food.business.owner == current_user %>
+                      <%= link_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,  edit_product_or_service_path(food), method: :get %>
+                      <%= link_to product_or_service_path(food), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                        <i class='fa-solid fa-trash'></i>
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
               </div>
