@@ -52,8 +52,8 @@
   }
 }
 
-.experience_card {
-
+.container_service-experience {
+  padding: 20px;
 }
 
 .reservation_username-check input[type="checkbox"] {
@@ -98,7 +98,7 @@
 .business-reservation label {
   position: relative;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.5em;
   padding: 0 0.25em 0;
   user-select: none;
   &::before {
@@ -110,5 +110,122 @@
     text-decoration-thickness: 3px;
     text-decoration-color: $black;
     transition: clip-path 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+.service-experience {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container_service {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  margin-bottom: 40px;
+}
+
+.service-experience img {
+  padding-left: 16px;
+  max-width: 100%;
+  height: auto;
+}
+
+.container_service-experience {
+  background-color: white;
+  &:hover {
+    background-color: #A167FF;
+    color: white !important;
+    & span {
+      color: white;
+    }
+  }
+}
+
+span {
+  cursor:pointer;
+}
+
+.number input{
+  height:34px;
+  width: 100px;
+  text-align: center;
+  font-size: 26px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// input custom
+.js-select-parent {
+	border-radius: 5px;
+	overflow: hidden;
+	width: 100px;
+	float:left;
+	margin-left:40px;
+}
+
+.js-select-parent > * {
+	float: left;
+	background: #C4544E;
+	color: white;
+	width: 25px;
+	text-align: center;
+	height: 40px;
+	line-height: 38px;
+}
+
+.js-select-number {
+	width: 50px;
+	position: relative;
+	overflow: hidden;
+}
+
+.select-adjust{
+	cursor:pointer;
+}
+.number-stack {
+	width:50px;
+	position: absolute;
+	display: block;
+	bottom:0px;
+	transition: all 0.3s;
+}
+.select-adjust:active{
+	background:#861B1A;
+	transform:translate(0,1px)
+}
+
+@keyframes downDeny{
+	50%{
+		transform:translateY(-10px);
+	}
+	100%{
+		transform:translateY(0px);
+	}
+}
+@keyframes upDeny{
+	50%{
+		transform:translateY(10px);
+	}
+	100%{
+		transform:translateY(0px);
+	}
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.section_price {
+  display: flex;
+  margin: 40px 0;
+  & div{
+    margin: 0 16px;
   }
 }
