@@ -72,148 +72,147 @@
     <%= @business.description %>
   </div>
   <%= form_with url: add_path, method: :post do |f| %>
-    <div class="services col-12">
-      <div class="services_experience col-xl-5 col-sm-12">
+
+    <div>
       <h2> Experiencias del Lugar</h2>
-        <section class="experience_card">
-          <% @services.each do |service| %>
-            <div class="row justify-content-center mb-4">
-              <div class="col-md-12 col-xl-12">
-                <div class="card shadow-0 border rounded-3">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
-                        <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                          <% service.photos.each_with_index do |photo, i| %>
-                            <% if (i == 0) %>
-                              <%= cl_image_tag photo.key, class: "w-100"%>
-                            <% end %>
-                            <a href="#!">
-                              <div class="hover-overlay">
-                                <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
-                              </div>
-                            </a>
-                          <% end %>
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-lg-6 col-xl-6">
-                        <h5><%= service.name %></h5>
-                        <div class="mt-1 mb-0 text-muted small">
-                          <span class="text-primary"> • </span>
-                          <span><%= service.category.name %></span>
-                        </div>
-                        <p class="text-truncate mb-4 mb-md-0">
-                          <%= service.description %>
-                        </p>
-                      </div>
-                      <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
-                        <div class="d-flex flex-row align-items-center mb-1">
-                          <h4 class="mb-1 me-1"><%= service.price %></h4>
-                        </div>
-                        <h6 class="text-success">Disponible</h6>
-                        <div class="d-flex flex-column mt-4">
-                          <%= f.label service.id, "Quantity:" %>
-                          <%= f.number_field service.id, min: 0 %>
-                          <% if service.business.owner == current_user %>
-                            <%= button_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,  edit_product_or_service_path(service), method: :get %>
-                            <!--<%= button_to "<i class='fa-solid fa-trash'></i>".html_safe,  product_or_service_path(service), method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>  -->
-                            <!-- <%= button_to "<i class='fa-solid fa-trash'></i>".html_safe, product_or_service_path(service), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%> -->
-                            <%= link_to product_or_service_path(service), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                              <i class='fa-solid fa-trash'></i>
-                            <% end %>
-                          <% end %>
-                        </div>
-                      </div>
-                    </div>
+      <div class="container_service">
+        <% @services.each do |service| %>
+          <div class="container_service-experience">
+            <div class="service-experience">
+              <div>
+                <h3><%= service.name %></h3>
+                <div class="mt-1 mb-0 text-muted small">
+                  <span class="text-primary"> • </span>
+                  <span><%= service.category.name %></span>
+                </div>
+                <p class="text-truncate mb-4 mb-md-0" style="width: 280px;">
+                  <%= service.description %>
+                </p>
+                <div class="section_price">
+                  <h4><strong>$<%=service.price %></strong></h4>
+                  <div class="number">
+                    <%= f.label service.id, "Quantity:" %>
+                    <%= f.number_field service.id, min: 0, value:0, class:"js-select input-number", name:"first" %>
                   </div>
                 </div>
               </div>
-            </div>
-          <% end %>
-        </section>
-      </div>
-      <div class="services_menu col-5">
-        <div class="menu-drink">
-        <h2>Bebidas</h2>
-          <% @drinks.each do |drink| %>
-            <div class="accordion" id="accordionExample<%=drink.id %>">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne<%=drink.id%>  " aria-expanded="true" aria-controls="collapseOne<%=drink.id %>">
-                    <%= drink.name %>
-                  </button>
-                </h2>
-                <div id="collapseOne<%=drink.id%>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample<%=drink.id%>">
-                  <div class="accordion-body">
-                    <%= drink.description %>
-                    <div class="accordion-body-img">
-                    <% drink.photos.each do |photo| %>
-                      <%= cl_image_tag photo.key %>
-                    <% end %>
-                    $<%=(drink.price) %>
-                  <%= f.label drink.id, "Quantity:" %>
-                  <%= f.number_field drink.id, min: 0 %>
-                  <ul>
-                    <% if drink.business.owner == current_user %>
-                      <%= button_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,   edit_product_or_service_path(drink), method: :get %>
-                      <%= link_to product_or_service_path(drink), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                        <i class='fa-solid fa-trash'></i>
-                      <% end %>
-                    <% end %>
-                  </ul>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% end %>
-          </div>
-      <div class="menu-food">
-        <h2>Comidas</h2>
-        <% @food.each do |food| %>
-          <div class="accordion" id="accordionExample<%=food.id %>">
-              <div class="accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne<%=food.id%>  " aria-expanded="true" aria-controls="collapseOne<%=food.id %>">
-                    <%= food.name %>
-                  </button>
-                </h2>
-                <div id="collapseOne<%=food.id%>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample<%=food.id%>">
-                  <div class="accordion-body">
-                    <%= food.description %>
-                    <div class="accordion-body-img">
-                    <% food.photos.each do |photo| %>
-                      <%= cl_image_tag photo.key %>
-                    <% end %>
-                    $<%=(food.price) %>
-                  <%= f.label food.id, "Quantity:" %>
-                  <%= f.number_field food.id, min: 0 %>
-                  <% if food.business.owner == current_user %>
-                    <%= button_to "<i class='fa-solid fa-pen-to-square'></i>".html_safe,  edit_product_or_service_path(food), method: :get %>
-                    <%= link_to product_or_service_path(food), class: '', data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                      <i class='fa-solid fa-trash'></i>
-                    <% end %>
+              <div>
+                <% service.photos.each_with_index do |photo, i| %>
+                  <% if (i == 0) %>
+                    <%= cl_image_tag photo.key, class:"img-fluid", height: 200, width: 300, crop: :fill%>
                   <% end %>
-                  </div>
-                  </div>
-                </div>
+                <% end %>
               </div>
             </div>
+          </div>
         <% end %>
       </div>
     </div>
-  </div>
-
-  <div class="business-reservation">
-    <h2>Form reservation:</h2>
-    <div class="reservation_username-check">
-      <%= f.label :user_name_check, "If the reservation is for someone different than you, please check this", :input_html => {'data-content'=> "If the reservation is for someone different than you, please check this"} %>
-      <%= f.check_box :user_name_check %>
-    </div>
-    <br>
     <div>
-      <%= f.label :user_name, "If the reservation is for someone different than you, please fill here the name" %>
-      <%= f.text_field :user_name %>
+      <h2>Bebidas</h2>
+      <div class="container_service">
+        <% @drinks.each do |drink| %>
+          <div class="container_service-experience">
+            <div class="service-experience">
+              <div>
+                <h3><%= drink.name %></h3>
+                <div class="mt-1 mb-0 text-muted small">
+                  <span class="text-primary"> • </span>
+                  <span><%= drink.category.name %></span>
+                </div>
+                <p class="text-truncate mb-4 mb-md-0" style="width: 280px;">
+                  <%= drink.description %>
+                </p>
+                <div class="section_price">
+                  <h4><strong>$<%=drink.price %></strong></h4>
+                  <div class="number">
+                    <%= f.label drink.id, "Quantity:" %>
+                    <%= f.number_field drink.id, min: 0, value:0, class:"js-select input-number", name:"first" %>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <% drink.photos.each_with_index do |photo, i| %>
+                  <% if (i == 0) %>
+                    <%= cl_image_tag photo.key, class:"img-fluid", height: 200, width: 300, crop: :fill%>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+        <div>
+      <h2>Comidas</h2>
+      <div class="container_service">
+        <% @food.each do |food| %>
+          <div class="container_service-experience">
+            <div class="service-experience">
+              <div>
+                <h3><%= food.name %></h3>
+                <div class="mt-1 mb-0 text-muted small">
+                  <span class="text-primary"> • </span>
+                  <span><%= food.category.name %></span>
+                </div>
+                <p class="text-truncate mb-4 mb-md-0" style="width: 280px;">
+                  <%= food.description %>
+                </p>
+                <div class="section_price">
+                  <h4><strong>$<%=food.price %></strong></h4>
+                  <div class="number">
+                    <%= f.label food.id, "Quantity:" %>
+                    <%= f.number_field food.id, min: 0, value:0, class:"js-select input-number", name:"first" %>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <% food.photos.each_with_index do |photo, i| %>
+                  <% if (i == 0) %>
+                    <%= cl_image_tag photo.key, class:"img-fluid", height: 200, width: 300, crop: :fill%>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="business-reservation">
+      <h2>Form reservation:</h2>
+      <div class="reservation_username-check">
+        <p><%= f.label :user_name_check, "If the reservation is for someone different than you, please check this", :input_html => {'data-content'=> "If the reservation is for someone different than you, please check this"} %></p>
+        <%= f.check_box :user_name_check %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :user_name, "If the reservation is for someone different than you, please fill here the name" %>
+        <%= f.text_field :user_name %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :date, "When do you need the reservation?" %>
+        <%= f.date_field :date %>
+        <%= f.time_field :time %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :comments, "If there is something we need to take into account or any other aditional comments, please let us know" %>
+        <%= f.text_field :comments %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :phone, "Please enter your phone" %>
+        <%= f.telephone_field :phone %>
+      </div>
+      <br>
+      <div>
+        <%= f.label :number_of_people, "Let us know for how many people is the reservation" %>
+        <%= f.number_field :number_of_people, in: 1..50, step: 1 %>
+      </div>
+      <br>
+      <%=  f.submit "Book in this restaurant", class: "btn btn-primary", style:"color:white" %>
     </div>
 
     <br>
@@ -230,22 +229,12 @@
 
     <br>
 
-    <div>
-      <%= f.label :phone, "Please enter your phone" %>
-      <%= f.telephone_field :phone, required: true %>
-    </div>
-
-    <br>
-    <div>
-      <%= f.label :number_of_people, "Let us know for how many people is the reservation" %>
-      <%= f.number_field :number_of_people, in: 1..50, step: 1, required: true %>
-    </div>
-
-    <br>
-    <%=  f.submit "Book in this restaurant", class: "btn btn-primary", style:"color:white" %>
-
-  </div>
-<% end %>
+      function changePos(numbers, pos){
+        numbers.css('bottom', '-' + pos*38 + 'px');
+      }
+    </script>
+  <% end %>
+</div>
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
