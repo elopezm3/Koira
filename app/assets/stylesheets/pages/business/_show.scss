@@ -54,9 +54,14 @@
 
 .container_service-experience {
   padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  &::hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
 }
 
-.reservation_username-check input[type="checkbox"] {
+.reservation_username-chec input[type="checkbox"] {
   position: relative;
   width: 1.5em;
   height: 1.5em;
@@ -98,7 +103,7 @@
 .business-reservation label {
   position: relative;
   cursor: pointer;
-  font-size: 1.5em;
+  font-size: 1rem;
   padding: 0 0.25em 0;
   user-select: none;
   &::before {
@@ -227,5 +232,21 @@ span {
   margin: 40px 0;
   & div{
     margin: 0 16px;
+  }
+}
+
+.form-switch .form-check-input {
+  margin-left: 0;
+}
+
+.form-switch {
+  padding-left: 0 !important;
+}
+
+.card-1 {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  &::hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 }
