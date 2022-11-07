@@ -1,32 +1,70 @@
-<div class="grid">
-  <p>Hola, <%= @user.first_name + " " + @user.last_name %></p>
-  <h1>Mi cuenta</h1>
-  <h2>My businesses</h2>
-  <% unless @businesses.nil? %>
-    <% @businesses.each do |business| %>
-      <div class="business_index-card">
-        <div>
-          <%= link_to "#{business.name}", business_path(business) %>
+<div class="c-section mb-5">
+  <h3 class="c-section__title"><span>
+      <p>Hola, <%= @user.first_name + " " + @user.last_name %> bienvenid@ a tu <strong>cuenta</strong></p>
+    </span></h3>
+  <li class="c-services__item">
+    <h3>Mis reservas</h3>
+    <p>To reach more customers and the goals of your business, a mobile application is necessary these days. We will work on the app design from scratch to final tested prototype.</p>
+    <div class="card2" style="text-align: center">
+      <% unless @purchases.nil? %>
+        <% @purchases.each do |purchase| %>
+          <div class="card mb-5">
+            <div>Business: <%= purchase.business.name %></div>
+            <div><%= purchase.date%></div>
+            <div><%= purchase.time.strftime("%I:%M%p") %></div>
+            <div><%= purchase.total_price%></div>
+            <div><%= link_to "See more details", purchase_path(purchase) %></div>
+
         </div>
-        <div><%= business.address %></div>
-        <div><%= business.description %></div>
-        <div><%= link_to "See reservations", my_business_path(business) %></div>
-        <% business.photos.each do |photo| %>
-          <div id="" class="swiper-slide">
-            <%= cl_image_tag photo.key, class:"img-fluid", height: 600, width: 1920, crop: :fill %>
+        <% end %>
+    </div>
+  </li>
+   <% end %>
+  <li class="c-services__item">
+    <h3>UX Consultation</h3>
+    <p>If  know what kind of service to request from us, don&rsquo;t worry. We can help and see what fits your business and your budget.</p>
+    <% unless @businesses.nil? %>
+      <% @businesses.each do |business| %>
+        <div class="business_index-card card" style="width: 100%;">
+          <ul class="list-group list-group-flush">
+            <div class="business_name" style="text-align: center">
+              <h3><strong><%= link_to "#{business.name}", business_path(business) %></strong></h3>
+            </div>
+            <div class="list-group-item"><%= business.address %></div>
+            <div class="list-group-item"><%= business.description %></div>
+            <div class="list-group-item"><%= link_to "See reservations", my_business_path(business) %></div>
+            <div>
+              <% business.photos.each do |photo| %>
+                <div clase="image-item">
+                  <%= cl_image_tag photo.key, class:"img-fluid", height: 200, width: 200, crop: :fill %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </li>
+    <li class="c-services__item">
+      <h3>Mobile Apps Design</h3>
+      <p>To reach more customers and the goals of your business, a mobile application is necessary these days. We will work on the app design from scratch to final tested prototype.</p>
+      <div class="card" style="text-align: center">
+        <h2>My purchases</h2>
+        <% unless @purchases.nil? %>
+          <% @purchases.each do |purchase| %>
+            <div class="card">
+              <div>Business: <%= purchase.business.name %></div>
+              <div><%= purchase.date%></div>
+              <div><%= purchase.time.strftime("%I:%M%p") %></div>
+              <div><%= purchase.total_price%></div>
+              <div><%= link_to "See more details", purchase_path(purchase) %></div>
+            <% end %>
           </div>
         <% end %>
       </div>
-    <% end %>
-  <% end %>
-  <h2>My purchases</h2>
-  <% unless @purchases.nil? %>
-    <% @purchases.each do |purchase| %>
-      <div>Business: <%= purchase.business.name %></div>
-      <div><%= purchase.date%></div>
-      <div><%= purchase.time.strftime("%I:%M%p") %></div>
-      <div><%= purchase.total_price%></div>
-      <div><%= link_to "See more details", purchase_path(purchase) %></div>
-    <% end %>
-  <% end %>
+    </li>
+    <li class="c-services__item">
+      <h3>UX Research</h3>
+      <p>It&rsquo;s important to research deeply for the product you want to build. We help in that by defining the user audience, working on user stories, competitive analysis and much more.</p>
+    </li>
+  </ul>
 </div>
