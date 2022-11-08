@@ -1,62 +1,11 @@
-<style>
-  @media (max-width: 767px) {
-    .carousel-inner .carousel-item > div {
-        display: none;
-    }
-    .carousel-inner .carousel-item > div:first-child {
-        display: block;
-    }
-  }
-
-  .card {
-    border-radius: 20px !important;
-  }
-
-  .border-dark {
-    border-color: #BBBBBB !important;
-  }
-
-  .carousel-control-prev-icon, .carousel-control-next-icon {
-    height: 48px;
-    width: 48px;
-    background-color: #F19C74;
-    background-size: 80%, 80%;
-    border-radius: 50%;
-    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-  }
-
-  .carousel-inner .carousel-item.active,
-  .carousel-inner .carousel-item-next,
-  .carousel-inner .carousel-item-prev {
-    display: flex;
-  }
-
-  /* medium and up screens */
-  @media (min-width: 768px) {
-
-
-    }
-
-    .carousel-inner .carousel-item-start.active,
-    .carousel-inner .carousel-item-prev {
-      transform: translateX(-25%);
-    }
-  }
-
-  .carousel-inner .carousel-item-end,
-  .carousel-inner .carousel-item-start {
-  transform: translateX(0);
-  }
-</style>
-<!-- Slide Pubs-->
-<div class="row">
   <div class="container text-center my-3 col-6">
     <h2 class="font-weight-light">Bares</h2>
-    <div class="row mx-auto my-auto justify-content-center border border-dark" style="border-radius: 20px;">
-      <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="row mx-auto my-auto justify-content-center" style="border-radius: 20px;" >
+      <div id="barCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active rounded">
-            <% @bars.each do |bar| %>
+         <% active = true %>
+          <% @bars.each do |bar| %>
+            <div class="carousel-item <%= "active" if active == true %> rounded">
               <div class="col-md-6">
                 <div class="card m-2">
                   <div class="card-img">
@@ -74,13 +23,14 @@
                   <button type="button" class="btn btn-primary m-2"><%= link_to "Conocer Más", business_path(bar) %></button>
                 </div>
               </div>
-            <% end %>
-          </div>
+            </div>
+            <% active = false %>
+          <% end %>
         </div>
-        <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+        <a class="carousel-control-prev bg-transparent w-aut" href="#barCarousel" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </a>
-        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+        <a class="carousel-control-next bg-transparent w-aut" href="#barCarousel" role="button" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </a>
       </div>
@@ -89,8 +39,8 @@
   <!-- Slide Restaurants-->
   <div class="container text-center my-3 col-6">
     <h2 class="font-weight-light">Restaurantes</h2>
-    <div class="row mx-auto my-auto justify-content-center border border-dark" style="border-radius: 20px;" >
-      <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="row mx-auto my-auto justify-content-center" style="border-radius: 20px;" >
+      <div id="restaurantCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
           <% active = true %>
           <% @restaurants.each do |restaurant| %>
@@ -116,10 +66,10 @@
             <% active = false %>
           <% end %>
         </div>
-        <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+        <a class="carousel-control-prev bg-transparent w-aut" href="#restaurantCarousel" role="button" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </a>
-        <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+        <a class="carousel-control-next bg-transparent w-aut" href="#restaurantCarousel" role="button" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </a>
       </div>
