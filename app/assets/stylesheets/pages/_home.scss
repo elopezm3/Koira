@@ -1,3 +1,10 @@
+p {
+  font-size: 16px;
+}
+
+a {
+
+}
 Specific CSS for your home-page
 #carouselExampleControls {
   border: #bbbbbb solid 1px;
@@ -9,6 +16,9 @@ Specific CSS for your home-page
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.swiper-wrapper {
 }
 
 .businesses_slide {
@@ -89,6 +99,61 @@ Specific CSS for your home-page
   align-items: center;
 }
 
+.business_cards {
+  padding: 28px !important;
+}
+
+.swiper-slide.business_cards-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  &:hover {
+    box-shadow: 0 14px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+}
+
+.business_cards-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 16px;
+  text-align: initial;
+  & .business_cards-description{
+    height: 48px;
+  }
+  & h3 {
+    font-size: 20px;
+  }
+  & p {
+    color: #323232;
+  }
+}
+
+.business_cards-description p{
+
+  text-overflow: ellipsis;
+  height: 52px;
+  width: 100%;
+  overflow: hidden;
+
+}
+
+
+.newSwiper1, .newSwiper2 {
+  padding: 0 0 60px 0 !important;
+}
+.container-swiper {
+  position: relative;
+}
+
+
+section {
+  padding: 4% 8% ;
+}
+
 @media (max-width: 760px) {
   .swiper-button-next {
     right: 20px;
@@ -97,4 +162,20 @@ Specific CSS for your home-page
   .swiper-button-prev {
     left: 20px;
   }
+}
+
+.swiper-button-next, .swiper-rtl, .swiper-button-prev {
+  color: #323232 !important;
+}
+
+.swiper-button-next {
+  right: 48px !important;
+}
+
+.swiper-button-prev {
+  left: 48px !important;
+}
+
+.business_cards-img img {
+  border-radius: 8px 8px 0 0;
 }

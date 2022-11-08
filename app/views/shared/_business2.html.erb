@@ -1,5 +1,3 @@
-<div class="row mt-4">
-  <!-- Slide bares-->
   <div class="container text-center my-3 col-6">
     <h2 class="font-weight-light">Bares</h2>
     <div class="row mx-auto my-auto justify-content-center" style="border-radius: 20px;" >
@@ -44,7 +42,7 @@
     <div class="row mx-auto my-auto justify-content-center" style="border-radius: 20px;" >
       <div id="restaurantCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" role="listbox">
-         <% active = true %>
+          <% active = true %>
           <% @restaurants.each do |restaurant| %>
             <div class="carousel-item <%= "active" if active == true %> rounded">
               <div class="col-md-6">

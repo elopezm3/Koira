@@ -1,0 +1,78 @@
+<section class="container-swiper">
+  <div class="swiper business_cards">
+  <h2>Más Visitados</h2>
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <% @businesses_most_visited.each do |visited| %>
+        <!-- Slides -->
+        <div class="swiper-slide business_cards-slide">
+          <%= link_to business_path(visited) do %>
+            <div class="business_cards-img">
+              <%= cl_image_tag visited.photos.first.key,
+            class:"img-fluid", height: 300, width: 400, crop: :fill %>
+            </div>
+            <div class="business_cards-info">
+              <h3>
+                <strong>
+                  <%= visited.name %>
+                </strong>
+              </h3>
+              <div class="business_cards-description">
+                <p style=""><%= visited.description %></p>
+                <% if @services %>
+                  <%= @services.each do |service| %>
+                    <%= service.price %>
+                  <%end%>
+                <% elsif @food %>
+                  <%= @food.each do |food| %>
+                    <%= food.price %>
+                  <%end%>
+                <% elsif @drinks %>
+                  <%= @food.each do |food| %>
+                    <%= food.price %>
+                  <%end%>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- If we need pagination -->
+    <%# <div class="swiper-pagination"></div> %>
+    <!-- If we need navigation buttons -->
+  </div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</section>
+<!-- Slider main container -->
+<script type="module">
+  const business_cards = new Swiper('.business_cards', {
+    // Optional parameters
+    slidesPerView: 1,
+    spaceBetween: 30,
+    direction: 'horizontal',
+    loop: true,
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+    delay: 2000,
+  },
+    breakpoints: {
+          769: {
+            slidesPerView: 4,
+            slidesPerGroup: 2
+          }
+        },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+</script>

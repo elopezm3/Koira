@@ -1,32 +1,55 @@
-<div class="grid">
-  <p>Hola, <%= @user.first_name + " " + @user.last_name %></p>
-  <h1>Mi cuenta</h1>
-  <h2>My businesses</h2>
-  <% unless @businesses.nil? %>
-    <% @businesses.each do |business| %>
-      <div class="business_index-card">
-        <div>
-          <%= link_to "#{business.name}", business_path(business) %>
-        </div>
-        <div><%= business.address %></div>
-        <div><%= business.description %></div>
-        <div><%= link_to "See reservations", my_business_path(business) %></div>
-        <% business.photos.each do |photo| %>
-          <div id="" class="swiper-slide">
-            <%= cl_image_tag photo.key, class:"img-fluid", height: 600, width: 1920, crop: :fill %>
+<div class="c-section mb-10"><br>
+  <h3 class="c-section__title"><span><br>
+      <p>Hola, <%= @user.first_name + " " + @user.last_name %> bienvenid@ a tu <strong>cuenta</strong></p>
+    </span><br>
+    <a href="#negocio"><button type="button" class="btn btn-primary btn-lg">Mi negocio</button></a>
+    <a href="#reserva"><button type="button" class="btn btn-primary btn-lg">Mis Reservas</button></a>
+  </h3>
+  <li class="c-services__item" id="reserva">
+    <h3>Mis reservas</h3>
+    <br>
+    <div class="card-group" style="text-align: center">
+      <% unless @purchases.nil? %>
+        <% @purchases.each do |purchase| %>
+          <div class="card list-group list-group-flush" style="padding: 16px">
+            <div class="list-group-item">Business: <%= purchase.business.name %></div>
+            <div class="list-group-item">Fecha: <%= purchase.date%></div>
+            <div class="list-group-item">Hora: <%= purchase.time.strftime("%I:%M%p") %></div>
+            <div class="list-group-item">Total: $<%= purchase.total_price%></div><br>
+            <div><button type="button" class="btn btn-primary"><%= link_to "Más detalles", purchase_path(purchase) %></div><br>
+            </button>
+          </div>
+      <% end %><br>
+    </div>
+  </li>
+  <% end %><br>
+  <li class="c-services__item">
+    <h3>Mi negocio</h3>
+    <br>
+    <% unless @businesses.nil? %>
+      <% @businesses.each do |business| %>
+        <div id="negocio"></div>
+        <div class="business_index-card card" style="width: 100%;">
+          <ul class="list-group list-group-flush">
+            <div class="business_name" style="text-align: center">
+              <h3><strong><%= link_to "#{business.name}", business_path(business) %></strong></h3>
+            </div>
+            <div class="list-group-item"><%= business.address %></div>
+            <div class="list-group-item"><%= business.description %></div>
+            <div class="list-group-item "><button type="button" class="btn btn-primary"><%= link_to "Ver las reservas en mi negocio", my_business_path(business) %></div>
+              <br>
+            </button>
+            <div class="img-service">
+              <% business.photos.each do |photo| %>
+                <div class="card-group img-service mb-5">
+                  <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, class:"img-service-photo" %>
+                </div>
+                <br>
+              <% end %>
+            </div>
           </div>
         <% end %>
-      </div>
-    <% end %>
-  <% end %>
-  <h2>My purchases</h2>
-  <% unless @purchases.nil? %>
-    <% @purchases.each do |purchase| %>
-      <div>Business: <%= purchase.business.name %></div>
-      <div><%= purchase.date%></div>
-      <div><%= purchase.time.strftime("%I:%M%p") %></div>
-      <div><%= purchase.total_price%></div>
-      <div><%= link_to "See more details", purchase_path(purchase) %></div>
-    <% end %>
-  <% end %>
+      <% end %>
+    </li>
+  </div>
 </div>

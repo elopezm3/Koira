@@ -199,9 +199,9 @@
 
     <div class="business-reservation">
       <h2>Form reservation:</h2>
-      <div class="reservation_username-check">
-        <p><%= f.label :user_name_check, "If the reservation is for someone different than you, please check this", :input_html => {'data-content'=> "If the reservation is for someone different than you, please check this"} %></p>
-        <%= f.check_box :user_name_check %>
+      <div class="form-switch ">
+        <%= f.label :user_name_check, "If the reservation is for someone different than you, please check this", class:"form-check-label" %>
+        <%= f.check_box :user_name_check, class:"form-check-input", :role => "switch", :id => "flexSwitchCheckDefault" %>
       </div>
       <br>
       <div>
