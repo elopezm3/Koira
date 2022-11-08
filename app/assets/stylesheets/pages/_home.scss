@@ -141,13 +141,17 @@ Specific CSS for your home-page
 
 }
 
+
+.newSwiper1, .newSwiper2 {
+  padding: 0 0 60px 0 !important;
+}
 .container-swiper {
   position: relative;
 }
 
 
 section {
-  padding: 10%;
+  padding: 4% 8% ;
 }
 
 @media (max-width: 760px) {
