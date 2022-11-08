@@ -15,7 +15,7 @@
         <button type="submit" class="fa-solid fa-magnifying-glass" style="padding: 16px;"></button>
       </div>
   -->
-    <div class="btn btn-primary">
+    <div class="btn btn-primary text-white">
       <%= link_to "Unir mi negocio", supplier_path, class: "nav-link" %>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <div class="user-name" style="padding:10px">
+          <div class="user-name text-white" style="padding:10px">
             <li><%= "#{current_user.first_name} #{current_user.last_name} | #{current_user.role}" %></li>
           </div>
           <li class="nav-item active">
