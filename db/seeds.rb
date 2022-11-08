@@ -7,10 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Purge all
-User.delete_all
-Business.delete_all
-Category.delete_all
-ProductOrService.delete_all
+User.destroy_all
+Business.destroy_all
+Category.destroy_all
+ProductOrService.destroy_all
+Purchase.destroy_all
+
 
 admin = User.new
 admin.first_name = "Admin"
