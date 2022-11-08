@@ -1,9 +1,9 @@
 <div class="view_reservation">
-  <div class="card text-center" style="padding: 30px; margin: 28px ">
+  <div class="text-center" style="padding: 30px; margin: 28px ">
     <h2>My <strong><%= @business.name %></strong> reservations</h2>
     <% unless @business_purchases.nil? %><br>
       <% @business_purchases.each do |purchase| %><br>
-        <div class="reservation_index-card">
+        <div class="reservation_index-card c-services__item">
           <% if purchase.date >= Date.today %><br>
             <div class="card mb-8" style="padding: 32px; margin: 0 10px ">
               <div class="reserva-view row g-2">

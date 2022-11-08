@@ -1,30 +1,34 @@
-<div class="c-section mb-5">
-  <h3 class="c-section__title"><span>
+<div class="c-section mb-10"><br>
+  <h3 class="c-section__title"><span><br>
       <p>Hola, <%= @user.first_name + " " + @user.last_name %> bienvenid@ a tu <strong>cuenta</strong></p>
-    </span></h3>
-  <li class="c-services__item">
+    </span><br>
+    <a href="#negocio"><button type="button" class="btn btn-primary btn-lg">Mi negocio</button></a>
+    <a href="#reserva"><button type="button" class="btn btn-primary btn-lg">Mis Reservas</button></a>
+  </h3>
+  <li class="c-services__item" id="reserva">
     <h3>Mis reservas</h3>
-    <p>To reach more customers and the goals of your business, a mobile application is necessary these days. We will work on the app design from scratch to final tested prototype.</p>
-    <div class="card2" style="text-align: center">
+    <br>
+    <div class="card-group" style="text-align: center">
       <% unless @purchases.nil? %>
         <% @purchases.each do |purchase| %>
-          <div class="card mb-5">
-            <div>Business: <%= purchase.business.name %></div>
-            <div><%= purchase.date%></div>
-            <div><%= purchase.time.strftime("%I:%M%p") %></div>
-            <div><%= purchase.total_price%></div>
-            <div><%= link_to "See more details", purchase_path(purchase) %></div>
-
-        </div>
-        <% end %>
+          <div class="card list-group list-group-flush" style="padding: 16px">
+            <div class="list-group-item">Business: <%= purchase.business.name %></div>
+            <div class="list-group-item">Fecha: <%= purchase.date%></div>
+            <div class="list-group-item">Hora: <%= purchase.time.strftime("%I:%M%p") %></div>
+            <div class="list-group-item">Total: $<%= purchase.total_price%></div><br>
+            <div><button type="button" class="btn btn-primary"><%= link_to "Más detalles", purchase_path(purchase) %></div><br>
+            </button>
+          </div>
+      <% end %><br>
     </div>
   </li>
-   <% end %>
+  <% end %><br>
   <li class="c-services__item">
-    <h3>UX Consultation</h3>
-    <p>If  know what kind of service to request from us, don&rsquo;t worry. We can help and see what fits your business and your budget.</p>
+    <h3>Mi negocio</h3>
+    <br>
     <% unless @businesses.nil? %>
       <% @businesses.each do |business| %>
+        <div id="negocio"></div>
         <div class="business_index-card card" style="width: 100%;">
           <ul class="list-group list-group-flush">
             <div class="business_name" style="text-align: center">
@@ -32,39 +36,20 @@
             </div>
             <div class="list-group-item"><%= business.address %></div>
             <div class="list-group-item"><%= business.description %></div>
-            <div class="list-group-item"><%= link_to "See reservations", my_business_path(business) %></div>
-            <div>
+            <div class="list-group-item "><button type="button" class="btn btn-primary"><%= link_to "Ver las reservas en mi negocio", my_business_path(business) %></div>
+              <br>
+            </button>
+            <div class="img-service">
               <% business.photos.each do |photo| %>
-                <div clase="image-item">
-                  <%= cl_image_tag photo.key, class:"img-fluid", height: 200, width: 200, crop: :fill %>
+                <div class="card-group img-service mb-5">
+                  <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, class:"img-service-photo" %>
                 </div>
+                <br>
               <% end %>
             </div>
           </div>
         <% end %>
       <% end %>
     </li>
-    <li class="c-services__item">
-      <h3>Mobile Apps Design</h3>
-      <p>To reach more customers and the goals of your business, a mobile application is necessary these days. We will work on the app design from scratch to final tested prototype.</p>
-      <div class="card" style="text-align: center">
-        <h2>My purchases</h2>
-        <% unless @purchases.nil? %>
-          <% @purchases.each do |purchase| %>
-            <div class="card">
-              <div>Business: <%= purchase.business.name %></div>
-              <div><%= purchase.date%></div>
-              <div><%= purchase.time.strftime("%I:%M%p") %></div>
-              <div><%= purchase.total_price%></div>
-              <div><%= link_to "See more details", purchase_path(purchase) %></div>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-    </li>
-    <li class="c-services__item">
-      <h3>UX Research</h3>
-      <p>It&rsquo;s important to research deeply for the product you want to build. We help in that by defining the user audience, working on user stories, competitive analysis and much more.</p>
-    </li>
-  </ul>
+  </div>
 </div>
