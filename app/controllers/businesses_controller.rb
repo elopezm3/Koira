@@ -24,6 +24,7 @@ class BusinessesController < ApplicationController
 
   def create
     current_user.role = "seller"
+    current_user.save
     @business = Business.new(business_params)
     @business.owner = current_user
     # important latitude and longitud to run.
