@@ -1,6 +1,6 @@
 <div class="view_reservation">
   <div class="text-center" style="padding: 30px; margin: 28px ">
-    <h2>My <strong><%= @business.name %></strong> reservations</h2>
+    <h2>Mis <strong><%= @business.name %></strong> Reservas</h2>
     <% unless @business_purchases.nil? %><br>
       <% @business_purchases.each do |purchase| %><br>
         <div class="reservation_index-card c-services__item">
@@ -9,16 +9,16 @@
               <div class="reserva-view row g-2">
               <%= image_tag "meetup.jpg", class: "img-reserva-view" %>
                 <div class="col-md-4">
-                Made by: <strong><%= purchase.user_name %></strong><br>
-                Phone: <strong><%= purchase.phone %></strong><br>
-                Date: <strong><%= purchase.date %></strong><br>
-                Time: <strong><%= purchase.time.strftime("%I:%M%p") %></strong><br>
-                Number of people: <strong><%= purchase.number_of_people %></strong><br>
-                Comments: <strong><%= purchase.comments %></strong><br>
+                Realizada por: <strong><%= purchase.user_name %></strong><br>
+                Teléfono: <strong><%= purchase.phone %></strong><br>
+                Fecha: <strong><%= purchase.date %></strong><br>
+                Hora: <strong><%= purchase.time.strftime("%I:%M%p") %></strong><br>
+                Número de personas: <strong><%= purchase.number_of_people %></strong><br>
+                Comentarios: <strong><%= purchase.comments %></strong><br>
                 Items:
                 <% purchase.purchase_items.each do |item| %><br>
-                  Name: <strong><%= item.product_or_service.name %></strong>
-                  Quantity: <strong><%= item.quantity %></strong>
+                  Nombre: <strong><%= item.product_or_service.name %></strong>
+                  Cantidad: <strong><%= item.quantity %></strong>
                 <% end %>
                 <% end %>
                 </div>

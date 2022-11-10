@@ -198,39 +198,39 @@
     </div>
 
     <div class="business-reservation">
-      <h2>Form reservation:</h2>
+      <h2>Formulario de reserva:</h2>
       <div class="form-switch ">
-        <%= f.label :user_name_check, "If the reservation is for someone different than you, please check this", class:"form-check-label" %>
+        <%= f.label :user_name_check, "Si la reserva es para alguien diferente a usted, por favor marque esta casilla", class:"form-check-label" %>
         <%= f.check_box :user_name_check, class:"form-check-input", :role => "switch", :id => "flexSwitchCheckDefault" %>
       </div>
       <br>
       <div>
-        <%= f.label :user_name, "If the reservation is for someone different than you, please fill here the name" %>
+        <%= f.label :user_name, "Si la reserva es para alguien diferente a usted, por favor ingrese aquí el nombre" %>
         <%= f.text_field :user_name %>
       </div>
       <br>
       <div>
-        <%= f.label :date, "When do you need the reservation?" %>
+        <%= f.label :date,"¿Cuándo necesitas la reserva?" %>
         <%= f.date_field :date %>
         <%= f.time_field :time %>
       </div>
       <br>
       <div>
-        <%= f.label :comments, "If there is something we need to take into account or any other aditional comments, please let us know" %>
-        <%= f.text_field :comments %>
+        <%= f.label :comments, "Si hay algo que debemos tener en cuenta, una solicitud especial en el servicio, experiencia o cualquier
+        otro comentario adicional, háznoslo saber" %><%= f.text_field :comments %>
       </div>
       <br>
       <div>
-        <%= f.label :phone, "Please enter your phone" %>
+        <%= f.label :phone, "Por favor ingrese su número de teléfono" %>
         <%= f.telephone_field :phone %>
       </div>
       <br>
       <div>
-        <%= f.label :number_of_people, "Let us know for how many people is the reservation" %>
+        <%= f.label :number_of_people, "Para cuántas personas es la reserva" %>
         <%= f.number_field :number_of_people, in: 1..50, step: 1 %>
       </div>
       <br>
-      <%=  f.submit "Book in this restaurant", class: "btn btn-primary", style:"color:white" %>
+      <%=  f.submit "Realizar reserva", class: "btn btn-primary", style:"color:white" %>
     </div>
   <% end %>
 </div>
