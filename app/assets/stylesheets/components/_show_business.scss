@@ -116,7 +116,7 @@ h2, h3, p, ul { margin: 0; }
       color: hsla(0, 0%, 100%, .85);
       left: 0px;
       @include bp-sm { width: 47ch; }
-      @include bp-md { width: 57ch; }
+      @include bp-md { width: 100%; }
       @include bp-lg { width: 67ch; }
     }
   }
