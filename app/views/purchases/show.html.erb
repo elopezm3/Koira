@@ -1,82 +1,96 @@
-<div class="mb-7 col-xl-12 mx-4" style="padding: auto; text-align: center">
-    <div>
-      <div class="reservation_index-card">
-        <div>
-          <%= image_tag "reserva.jpg", class: "img-reserva" %>
-        </div>
-        <div>
-          <p>Congrats, you made a reservation at <strong><%= @business.name %></strong></p>
-          <h3>Reservation info:</h3>
-          <br>
-          <div class="reservation-info">
-            For: <strong><%= @purchase.user_name %></strong>
-            Phone: <strong><%= @purchase.phone %></strong>
-            Date: <strong><%= @purchase.date %> at <%= @purchase.time.strftime("%I:%M%p") %></strong>
-            Total purchase price: <strong><%= @total_price %></strong>
-            <% if @purchase.comments %>
-              Comments: <strong><%= @purchase.comments %></strong>
-            <% end %><br>
-          </div>
-        </div>
-      </div>
-      <div class="reservation_index-card">
-        <h3>Additional experiences</h3>
-        <% if @services %>
-          <% @services.each do |service| %><br>
-            <div>
-              <strong><%= service.product_or_service.name %></strong>
-            </div>
-            <%= service.product_or_service.description %><br>
-            Category: <%= service.product_or_service.category.name %><br>
-            Price per single item: <strong>$<%= service.product_or_service.price %></strong>
-            Quantity: <strong><%= service.quantity %></strong>
-            Total price: <strong>$ <%= service.product_or_service.price * service.quantity %></strong>
-            <div class="img-service">
-              <% service.product_or_service.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 100, width: 200, crop: :fill, class:"img-service-photo"%><br>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %><br>
-        <div><br>
-        <strong><h3>Food & Drink</h3></strong>
-          <% if @food %>
-            <% @food.each do |food| %><br>
-              <div>
-                <strong><%= food.product_or_service.name %></strong><br>
-              </div>
-              <%= food.product_or_service.description %><br>
-              Category: <%= food.product_or_service.category.name %><br>
-              Price per single item: <strong>$<%= food.product_or_service.price %></strong><br>
-              Quantity: <strong><%= food.quantity %></strong>
-              Total price: <strong>$ <%= food.product_or_service.price * food.quantity %></strong><br>
-              <div class="img-service">
-                <% food.product_or_service.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, height: 100, width: 200, crop: :fill, class:"img-service-photo" %><br>
-                <% end %>
-              </div>
-            <% end %>
-          <% end %>
-        </div><br>
-        <div>
-          <% if @drinks %>
-            <% @drinks.each do |drink| %><br>
-            <div>
-              <strong><%= drink.product_or_service.name %></strong><br>
-            </div>
-            <%= drink.product_or_service.description %><br>
-            Category: <%= drink.product_or_service.category.name %><br>
-            Price per single item: <strong>$<%= drink.product_or_service.price %></strong><br>
-            Quantity: <strong><%= drink.quantity %></strong>
-            Total price: <strong>$ <%= drink.product_or_service.price * drink.quantity %></strong><br>
-            <div class="img-service">
-              <% drink.product_or_service.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, height: 100, width: 200, crop: :fill, class:"img-service-photo" %><br>
-              <% end %>
-            </div>
-          <% end %>
-          <% end %>
-        </div><br>
-      </div><br>
+<div class="card text-center">
+  <div class="reservation_index-card">
+    <div style="padding: 10px">
+      <%= image_tag "reserva.jpg", class: "img-reserva" %><br>
     </div>
+    <div class="card c-services__item" style="padding: 2px 24px;">
+      <br>
+      <h3>Información de tu reserva:</h3>
+      <br>
+      <div class="card mb-3"><br>
+        <div class="check" style="text-align: 100px">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+          width="80" height="80"
+          viewBox="0 0 48 48">
+            <path fill="#4caf50" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path><path fill="#ccff90" d="M34.602,14.602L21,28.199l-5.602-5.598l-2.797,2.797L21,33.801l16.398-16.402L34.602,14.602z"></path>
+          </svg>
+        </div>
+        <br>
+        <span class="glyphicon glyphicon-ok"></span>
+        Felicidades, tu reserva ha sido realizada en <strong><%= @business.name %></strong>
+        Nombre: <strong><%= @purchase.user_name %></strong>
+        Teléfono: <strong><%= @purchase.phone %></strong>
+        Fecha: <strong><%= @purchase.date %> Hora: <%= @purchase.time.strftime("%I:%M%p") %></strong>
+        Precio total de la reserva: <strong>$<%= @total_price %></strong>
+        <% if @purchase.comments %>
+          Comentarios o solicitudes especiales: <strong><%= @purchase.comments %></strong>
+        <% end %><br>
+      </div>
+    </div>
+  </div>
+  <div class="reservation_index-card c-services__item" style="padding: 15px 28px">
+    <h3>Experiencias seleccionadas</h3>
+    <div class="card mb-10" style="padding: 32px; margin: 0 10px ">
+      <% if @services %>
+        <% @services.each do |service| %><br>
+          <div>
+            <strong><%= service.product_or_service.name %></strong>
+          </div>
+          <%= service.product_or_service.description %><br>
+          Categoría: <%= service.product_or_service.category.name %><br>
+          Precio por item: <strong>$<%= service.product_or_service.price %></strong>
+          Cantidad: <strong><%= service.quantity %></strong>
+          Precio total: <strong>$ <%= service.product_or_service.price * service.quantity %></strong><br>
+          <div class="img-service">
+            <% service.product_or_service.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 100, width: 200, crop: :fill, class:"img-service-photo"%><br>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %><br>
+    </div>
+  </div>
+  <br>
+  <div class="reservation_index-card c-services__item" style="padding: 15px 28px" >
+    <h3>Food & Drink</h3>
+    <div class="card mb-10" style="padding: 32px; margin: 0 10px ">
+      <% if @food %>
+        <% @food.each do |food| %><br>
+          <div>
+            <strong><%= food.product_or_service.name %></strong><br>
+          </div>
+          <%= food.product_or_service.description %><br>
+          Categoría: <%= food.product_or_service.category.name %><br>
+          Precio por item: <strong>$<%= food.product_or_service.price %></strong><br>
+          Cantidad: <strong><%= food.quantity %></strong>
+          Precio total: <strong>$ <%= food.product_or_service.price * food.quantity %></strong><br>
+          <div class="img-service">
+            <% food.product_or_service.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 100, width: 200, crop: :fill, class:"img-service-photo" %><br>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+      <br>
+      <% if @drinks %>
+        <% @drinks.each do |drink| %><br>
+          <div>
+            <strong><%= drink.product_or_service.name %></strong><br>
+          </div>
+          <%= drink.product_or_service.description %><br>
+          Categoría: <%= drink.product_or_service.category.name %><br>
+          Precio por item: <strong>$<%= drink.product_or_service.price %></strong><br>
+          Cantidad: <strong><%= drink.quantity %></strong>
+          Precio total: <strong>$ <%= drink.product_or_service.price * drink.quantity %></strong><br>
+          <div class="img-service">
+            <% drink.product_or_service.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 100, width: 200, crop: :fill, class:"img-service-photo" %><br>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<br>
 </div>
